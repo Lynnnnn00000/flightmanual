@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flight Manual</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "react": "https://esm.sh/react@18.2.0",
+            "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+            "lucide-react": "https://esm.sh/lucide-react@0.263.1"
+        }
+    }
+    </script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body { 
+            background-color: #0f172a; 
+            color: #e2e8f0; 
+            -webkit-tap-highlight-color: transparent; 
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        .scan-line { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 2px; 
+            background: rgba(56, 189, 248, 0.3); 
+            animation: scan 3s linear infinite; pointer-events: none; z-index: 50; opacity: 0.3; 
+        }
+        @keyframes scan { 0% { transform: translateY(-100vh); } 100% { transform: translateY(100vh); } }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 2px; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect } from 'react';
+        import { createRoot } from 'react-dom/client';
+        import { 
+            BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
+            CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
+            Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
+            Box, Layers, AlignLeft, Grid
+        } from 'lucide-react';
+
+        // --- Data Definitions ---
+
+        const phases = [
+            { id: "deepWork", time: "09:00 - 12:00", title: "高空巡航 (深度工作)", color: "text-emerald-400", icon: Sun, desc: "黃金時段。大腦最乾淨、邏輯最強。", dos: ["資料分析", "系統建構", "策略規劃"], donts: ["開會", "社交", "行政雜事", "情緒勞動"] },
+            { id: "refuel", time: "12:00 - 14:00", title: "空中加油 (能量恢復)", color: "text-amber-400", icon: Coffee, desc: "系統冷卻期。主推進器脫離。", dos: ["獨自吃飯", "散步/自然", "安靜", "無輸入模式"], donts: ["社交午餐", "回答問題", "深度思考"] },
+            { id: "maneuver", time: "14:00 - 16:00", title: "低空應變 (回應模式)", color: "text-cyan-400", icon: Activity, desc: "次級深度。適合例行公事與維護作業。", dos: ["回覆郵件/訊息", "例行報告", "資料清洗", "進度追蹤"], donts: ["啟動大型新專案", "高風險決策"] },
+            { id: "rest", time: "16:00 +", title: "停機歸位 (系統關閉)", color: "text-indigo-400", icon: Moon, desc: "完全關機。回到基地修復。", dos: ["空間 Reset", "料理/滋養", "個人研究", "睡眠"], donts: ["工作訊息", "煩惱明天", "藍光刺激"] }
+        ];
+
+        const specs = [
+            { title: "核心引擎：MG 薦骨動力", icon: Zap, color: "text-orange-400", desc: "非線性、爆發型能量。嚴禁強制啟動，需等待「回應」點火。適合短時間高強度衝刺，必須搭配頻繁的冷卻重置。" },
+            { title: "導航系統：學者型雷達", icon: Map, color: "text-indigo-400", desc: "高度依賴「視覺化地圖」。需要「大地圖」提供安全感，但需要「開放領空」進行自由探索。邏輯與結構是系統安定的關鍵。" },
+            { title: "燃料系統：視覺化庫存", icon: Eye, color: "text-cyan-400", desc: "視覺管理協議。「看不見 = 不存在」。採用「1+1」庫存策略（使用中+1備品）。零雜物 = 零焦慮 = 高效能。" },
+            { title: "裝甲護盾：4/6 高敏塗層", icon: Shield, color: "text-emerald-400", desc: "高敏感防護罩。適合「低語境」環境（如北歐）。易受情緒滲透與噪音干擾。必須執行「定期撤退 (Retreat)」以修復護盾完整性。" },
+            { title: "主要任務：系統架構師", icon: Server, color: "text-rose-400", desc: "將混亂轉化為秩序。核心職能：文件化 (Documentation)、後台運營 (Ops)、資料支援。非前線作戰單位，而是戰略骨幹。" }
+        ];
+
+        const diagnostics = [
+            { obs: "對晨間日記/冥想毫無動力，雖是大眾推薦的好習慣。", analysis: "【引擎不相容】MG 引擎是「回應制」。面對空白紙張硬寫日記屬於「發起」，會導致引擎空轉。冥想要求關閉雷達，違反高敏偵測的天性。", fix: "改用「戰術板」：看著選項做反應（勾選/刪除），而非無中生有。" },
+            { obs: "被評價為「難以掌握/難相處」，但我只是實事求是。", analysis: "【導航者特質】這不是 Bug，是導航系統的「自動校正」功能。系統優先級：事實 > 人情。當發現邏輯錯誤時，會本能拒絕執行錯誤指令。", fix: "接受設定：你是「參謀/架構師」，本來就不適合當盲從的兵。" },
+            { obs: "看到解法但負責人不執行，或自己有方向卻沒能力做時，感到極度煩躁。", analysis: "【架構師的詛咒】你看得見「最佳路徑」，但現實（他人怠惰/技能落差）跟不上。這是「速度差」造成的摩擦。你討厭不負責，是因為這破壞了系統的完整性。", fix: "他人：練習「課題分離」，不替人負責，這才是對自己負責。自己：將「沒能力」的焦慮轉化為具體的「待學技能 (Quest)」，標記在待辦事項，不要用情緒內耗。" }
+        ];
+
+        const checklistData = {
+            takeoff: {
+                t1: { text: '燃料補給', subtext: '檢查水份攝取' },
+                t2: { text: '薦骨掃描', subtext: '確認能量存量' },
+                t3: { text: '防護罩開啟', subtext: '降噪耳機 / 音樂' },
+                t4: { text: '鎖定航向', subtext: '確認今日主線' },
+            },
+            landing: {
+                l1: { text: '切斷訊號', subtext: '關閉通訊軟體' },
+                l2: { text: '跑道淨空', subtext: '桌面物理歸零' },
+                l3: { text: '機師彈射', subtext: '靈魂登出下班' },
+            }
+        };
+
+        const spatialData = [
+            { title: "可視化原則", desc: "看不到＝不存在。抽屜一拉即見全貌，不需翻找記憶。" },
+            { title: "1+1 備品系統", desc: "一份使用中，一份備品。不囤貨，保持流動與新鮮。" },
+            { title: "Apple 空間感", desc: "80% 留白，20% 物件。桌面只留必要，降低視覺雜訊。" },
+            { title: "零阻力動線", desc: "物品必須在「手伸出去就拿到」的地方。" }
+        ];
+
+        // --- Main Component ---
+
+        const App = () => {
+            const [tab, setTab] = useState('rhythm'); // rhythm, specs, check, space
+            
+            // Current Rhythm Phase Calculation
+            const hour = new Date().getHours();
+            let currentPhaseId = "rest";
+            if (hour >= 9 && hour < 12) currentPhaseId = "deepWork";
+            else if (hour >= 12 && hour < 14) currentPhaseId = "refuel";
+            else if (hour >= 14 && hour < 18) currentPhaseId = "maneuver";
+
+            // Checklist Logic (LocalStorage)
+            const [checklistMode, setChecklistMode] = useState('takeoff');
+            const [checkedItems, setCheckedItems] = useState({});
+
+            useEffect(() => {
+                const saved = localStorage.getItem('flight_manual_checklist');
+                const savedDate = localStorage.getItem('flight_manual_date');
+                const today = new Date().toDateString();
+                
+                if (saved && savedDate === today) {
+                    setCheckedItems(JSON.parse(saved));
+                } else {
+                    // Reset on new day
+                    localStorage.setItem('flight_manual_date', today);
+                    setCheckedItems({});
+                }
+            }, []);
+
+            const toggleCheck = (id) => {
+                const newStatus = { ...checkedItems, [id]: !checkedItems[id] };
+                setCheckedItems(newStatus);
+                localStorage.setItem('flight_manual_checklist', JSON.stringify(newStatus));
+            };
+
+            return (
+                <div className="min-h-screen p-4 md:p-6 pb-20 max-w-3xl mx-auto">
+                    <div className="scan-line"></div>
+                    
+                    {/* Header */}
+                    <header className="flex items-center justify-between mb-6 border-b border-sky-500/30 pb-4">
+                        <div className="flex items-center gap-3">
+                            <div className="p-2 bg-sky-500/10 rounded border border-sky-500/50">
+                                <BookOpen className="text-sky-400" size={24} />
+                            </div>
+                            <div>
+                                <h1 className="text-xl font-bold tracking-widest text-sky-400">FLIGHT MANUAL</h1>
+                                <p className="text-[10px] text-slate-500">OPERATIONAL GUIDELINES</p>
+                            </div>
+                        </div>
+                        <div className="text-[10px] text-slate-500 font-mono">
+                            v4.6
+                        </div>
+                    </header>
+
+                    {/* Navigation Tabs */}
+                    <div className="grid grid-cols-4 gap-1 bg-slate-900/50 p-1 rounded-lg mb-8 border border-slate-800">
+                        <button onClick={() => setTab('rhythm')} className={`py-2 rounded flex flex-col items-center justify-center gap-1 transition-all ${tab === 'rhythm' ? 'bg-sky-500/20 text-sky-400 shadow-lg shadow-sky-500/10' : 'text-slate-500 hover:text-slate-300'}`}>
+                            <Activity size={16} />
+                            <span className="text-[9px] font-bold">RHYTHM</span>
+                        </button>
+                        <button onClick={() => setTab('specs')} className={`py-2 rounded flex flex-col items-center justify-center gap-1 transition-all ${tab === 'specs' ? 'bg-indigo-500/20 text-indigo-400 shadow-lg shadow-indigo-500/10' : 'text-slate-500 hover:text-slate-300'}`}>
+                            <Cpu size={16} />
+                            <span className="text-[9px] font-bold">SPECS</span>
+                        </button>
+                        <button onClick={() => setTab('check')} className={`py-2 rounded flex flex-col items-center justify-center gap-1 transition-all ${tab === 'check' ? 'bg-emerald-500/20 text-emerald-400 shadow-lg shadow-emerald-500/10' : 'text-slate-500 hover:text-slate-300'}`}>
+                            <ClipboardCheck size={16} />
+                            <span className="text-[9px] font-bold">CHECK</span>
+                        </button>
+                        <button onClick={() => setTab('space')} className={`py-2 rounded flex flex-col items-center justify-center gap-1 transition-all ${tab === 'space' ? 'bg-amber-500/20 text-amber-400 shadow-lg shadow-amber-500/10' : 'text-slate-500 hover:text-slate-300'}`}>
+                            <Layout size={16} />
+                            <span className="text-[9px] font-bold">SPACE</span>
+                        </button>
+                    </div>
+
+                    {/* Content Area */}
+                    <main className="space-y-6">
+                        
+                        {/* 1. RHYTHM */}
+                        {tab === 'rhythm' && (
+                            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                {phases.map((p, i) => {
+                                    const isCurrent = p.id === currentPhaseId;
+                                    return (
+                                        <div key={i} className={`p-5 rounded-xl border transition-all relative overflow-hidden ${isCurrent ? 'bg-slate-800/80 border-sky-500 ring-1 ring-sky-500/50 shadow-lg shadow-sky-500/10' : 'bg-slate-900/40 border-slate-800 opacity-60 hover:opacity-100 hover:border-slate-700'}`}>
+                                            {isCurrent && <div className="absolute top-0 right-0 px-2 py-1 bg-sky-500 text-slate-900 text-[10px] font-bold">CURRENT PHASE</div>}
+                                            <div className="flex items-start gap-4">
+                                                <div className={`p-3 rounded-lg bg-slate-950 border border-slate-800 ${p.color}`}>
+                                                    <p.icon size={24} />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <div className="flex justify-between items-center mb-1">
+                                                        <h3 className={`font-bold text-base ${p.color}`}>{p.title}</h3>
+                                                        <span className="text-xs text-slate-500 font-mono border border-slate-700 px-1.5 rounded">{p.time}</span>
+                                                    </div>
+                                                    <p className="text-sm text-slate-300 mb-4 leading-relaxed">{p.desc}</p>
+                                                    
+                                                    <div className="grid grid-cols-2 gap-4">
+                                                        <div className="bg-slate-950/50 p-2 rounded border border-slate-800/50">
+                                                            <span className="text-emerald-500 font-bold text-[10px] uppercase tracking-wider block mb-2 border-b border-emerald-500/20 pb-1">DO (執行)</span>
+                                                            <ul className="text-xs text-slate-400 space-y-1">
+                                                                {p.dos.map(d => <li key={d} className="flex items-start gap-1.5"><span className="text-emerald-500 mt-0.5">•</span>{d}</li>)}
+                                                            </ul>
+                                                        </div>
+                                                        <div className="bg-slate-950/50 p-2 rounded border border-slate-800/50">
+                                                            <span className="text-rose-500 font-bold text-[10px] uppercase tracking-wider block mb-2 border-b border-rose-500/20 pb-1">DON'T (避免)</span>
+                                                            <ul className="text-xs text-slate-400 space-y-1">
+                                                                {p.donts.map(d => <li key={d} className="flex items-start gap-1.5"><span className="text-rose-500 mt-0.5">•</span>{d}</li>)}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        )}
+
+                        {/* 2. SPECS */}
+                        {tab === 'specs' && (
+                            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <div className="grid grid-cols-1 gap-3">
+                                    {specs.map((item, i) => (
+                                        <div key={i} className="bg-slate-900/80 border border-slate-800 p-4 rounded-xl flex items-center gap-4 hover:border-indigo-500/30 transition-colors">
+                                            <div className={`p-3 rounded-lg bg-slate-950 border border-slate-800 ${item.color}`}>
+                                                <item.icon size={20} />
+                                            </div>
+                                            <div>
+                                                <h4 className={`font-bold text-sm ${item.color} mb-1`}>{item.title}</h4>
+                                                <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                
+                                <div className="pt-4 border-t border-slate-800">
+                                    <h3 className="text-xs font-bold text-slate-400 flex items-center gap-2 mb-4 uppercase tracking-wider">
+                                        <Bug size={14} className="text-rose-500"/> System Diagnostics (自我診斷)
+                                    </h3>
+                                    <div className="space-y-4">
+                                        {diagnostics.map((item, i) => (
+                                            <div key={i} className="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                                                <div className="flex items-start gap-3 mb-3">
+                                                    <AlertCircle size={16} className="text-rose-400 mt-0.5 shrink-0" />
+                                                    <p className="text-sm font-bold text-slate-200">"{item.obs}"</p>
+                                                </div>
+                                                <div className="pl-7 space-y-3">
+                                                    <div className="text-xs text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 p-2 rounded leading-relaxed">
+                                                        <span className="font-bold block mb-1">ANALYSIS:</span>
+                                                        {item.analysis}
+                                                    </div>
+                                                    <div className="flex items-start gap-2 text-xs text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20 p-2 rounded">
+                                                        <CheckCircle size={14} className="mt-0.5 shrink-0"/>
+                                                        <span>FIX: {item.fix}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* 3. CHECKLIST */}
+                        {tab === 'check' && (
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <div className="flex gap-2 mb-6">
+                                    <button onClick={() => setChecklistMode('takeoff')} className={`flex-1 py-3 text-xs font-bold rounded-lg border flex items-center justify-center gap-2 transition-all ${checklistMode === 'takeoff' ? 'bg-sky-500/10 border-sky-500 text-sky-400' : 'bg-slate-900 border-slate-800 text-slate-500'}`}>
+                                        <PlaneTakeoff size={16} /> 啟動 (STARTUP)
+                                    </button>
+                                    <button onClick={() => setChecklistMode('landing')} className={`flex-1 py-3 text-xs font-bold rounded-lg border flex items-center justify-center gap-2 transition-all ${checklistMode === 'landing' ? 'bg-indigo-500/10 border-indigo-500 text-indigo-400' : 'bg-slate-900 border-slate-800 text-slate-500'}`}>
+                                        <PlaneLanding size={16} /> 關閉 (SHUTDOWN)
+                                    </button>
+                                </div>
+
+                                <div className="space-y-3">
+                                    {Object.entries(checklistData[checklistMode]).map(([key, item]) => (
+                                        <div 
+                                            key={key} 
+                                            onClick={() => toggleCheck(key)}
+                                            className={`p-4 rounded-xl border flex items-center gap-4 cursor-pointer transition-all group ${checkedItems[key] ? 'bg-slate-900/30 border-slate-800 opacity-50' : 'bg-slate-800/40 border-slate-700 hover:border-sky-500/50 hover:bg-slate-800/60'}`}
+                                        >
+                                            <div className={`w-6 h-6 rounded flex items-center justify-center border transition-colors ${checkedItems[key] ? 'bg-emerald-500 border-emerald-500 text-slate-900' : 'border-slate-600 group-hover:border-sky-500'}`}>
+                                                {checkedItems[key] && <CheckSquare size={14} strokeWidth={3} />}
+                                            </div>
+                                            <div className="flex-1">
+                                                <h4 className={`font-bold text-sm mb-0.5 ${checkedItems[key] ? 'text-slate-500 line-through' : 'text-slate-200'}`}>{item.text}</h4>
+                                                <p className="text-xs text-slate-500 font-mono">{item.subtext}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="mt-8 text-center text-[10px] text-slate-600 border-t border-slate-800/50 pt-4">
+                                    * 狀態自動暫存於本機 (Local Storage)，無需連網。
+                                </div>
+                            </div>
+                        )}
+
+                        {/* 4. SPACE */}
+                        {tab === 'space' && (
+                            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl">
+                                    <h3 className="text-amber-400 font-bold flex items-center gap-2 mb-2">
+                                        <Layout size={18} /> SPATIAL CONFIGURATION
+                                    </h3>
+                                    <p className="text-xs text-amber-200/70 leading-relaxed">
+                                        環境即心智的外化。透過控制物理空間，直接調節心理狀態。
+                                    </p>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {spatialData.map((item, i) => (
+                                        <div key={i} className="bg-slate-900/50 border border-slate-800 p-5 rounded-xl flex flex-col gap-2">
+                                            <h4 className="text-sky-400 font-bold text-sm flex items-center gap-2">
+                                                <span className="w-5 h-5 rounded-full bg-sky-500/20 flex items-center justify-center text-[10px] border border-sky-500/50">{i+1}</span>
+                                                {item.title}
+                                            </h4>
+                                            <p className="text-xs text-slate-400 leading-relaxed pl-7">{item.desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="bg-slate-950 p-5 rounded-xl border border-dashed border-slate-700">
+                                    <h4 className="text-xs font-bold text-slate-300 mb-4 uppercase tracking-widest flex items-center gap-2">
+                                        <Grid size={14}/> Zone Definition
+                                    </h4>
+                                    <div className="space-y-4">
+                                        <div className="flex gap-4">
+                                            <div className="w-16 text-[10px] font-bold text-indigo-400 py-1 bg-indigo-500/10 text-center rounded h-fit border border-indigo-500/30">FUNCTIONAL</div>
+                                            <div className="text-xs text-slate-400 flex-1 border-l border-slate-800 pl-4">書桌：最多 3 樣物品。保持絕對淨空。這是戰鬥艙。</div>
+                                        </div>
+                                        <div className="flex gap-4">
+                                            <div className="w-16 text-[10px] font-bold text-rose-400 py-1 bg-rose-500/10 text-center rounded h-fit border border-rose-500/30">REPAIR</div>
+                                            <div className="text-xs text-slate-400 flex-1 border-l border-slate-800 pl-4">床鋪：修復區。禁止任何工作相關物品入侵。</div>
+                                        </div>
+                                        <div className="flex gap-4">
+                                            <div className="w-16 text-[10px] font-bold text-emerald-400 py-1 bg-emerald-500/10 text-center rounded h-fit border border-emerald-500/30">FLOW</div>
+                                            <div className="text-xs text-slate-400 flex-1 border-l border-slate-800 pl-4">收納：採用 1+1 備品制。看得見才存在。</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                    </main>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
