@@ -39,6 +39,14 @@
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 2px; }
+
+        /* Animation Utilities */
+        .animate-in { animation-duration: 0.5s; animation-fill-mode: both; }
+        .fade-in { animation-name: fadeIn; }
+        .slide-in-from-bottom-4 { animation-name: slideInFromBottom; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInFromBottom { from { transform: translateY(1rem); } to { transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -51,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -66,7 +74,7 @@
         const specs = [
             { title: "核心引擎：MG 薦骨動力", icon: Zap, color: "text-orange-400", desc: "非線性、爆發型能量。嚴禁強制啟動，需等待「回應」點火。適合短時間高強度衝刺，必須搭配頻繁的冷卻重置。" },
             { title: "導航系統：學者型雷達", icon: Map, color: "text-indigo-400", desc: "高度依賴「視覺化地圖」。需要「大地圖」提供安全感，但需要「開放領空」進行自由探索。邏輯與結構是系統安定的關鍵。" },
-            { title: "燃料系統：視覺化庫存", icon: Eye, color: "text-cyan-400", desc: "視覺管理協議。「看不見 = 不存在」。採用「1+1」庫存策略（使用中+1備品）。零雜物 = 零焦慮 = 高效能。" },
+            { title: "燃料系統：視覺化庫存", icon: Eye, color: "text-cyan-400", desc: "視覺協議與空間動線。建立「零阻力動線」（物品手伸即得）與「1+1 備品制」。維持桌面 80% 留白。看不見＝不存在，零雜物＝零焦慮。" },
             { title: "裝甲護盾：4/6 高敏塗層", icon: Shield, color: "text-emerald-400", desc: "高敏感防護罩。適合「低語境」環境（如北歐）。易受情緒滲透與噪音干擾。必須執行「定期撤退 (Retreat)」以修復護盾完整性。" },
             { title: "主要任務：系統架構師", icon: Server, color: "text-rose-400", desc: "將混亂轉化為秩序。核心職能：文件化 (Documentation)、後台運營 (Ops)、資料支援。非前線作戰單位，而是戰略骨幹。" }
         ];
@@ -91,17 +99,48 @@
             }
         };
 
-        const spatialData = [
-            { title: "可視化原則", desc: "看不到＝不存在。抽屜一拉即見全貌，不需翻找記憶。" },
-            { title: "1+1 備品系統", desc: "一份使用中，一份備品。不囤貨，保持流動與新鮮。" },
-            { title: "Apple 空間感", desc: "80% 留白，20% 物件。桌面只留必要，降低視覺雜訊。" },
-            { title: "零阻力動線", desc: "物品必須在「手伸出去就拿到」的地方。" }
-        ];
+        const pilotData = {
+            core: {
+                title: "核心代碼：大水流向系統",
+                desc: "命盤終極邏輯：你是一座核反應爐（申子辰水局），能量過剩是原廠設定。唯一解法是建立「系統（甲木）」，將混亂能量轉化為有序結構。靠「人」會累死，靠「機制」才會發財。",
+                tags: ["High Voltage", "羊刃將軍", "反人治"]
+            },
+            kernel: {
+                title: "KERNEL LAYER (運算內核)：壬子羊刃",
+                subtitle: "The Double-Edged Sword",
+                desc: "日支「子」是壬水的「羊刃」。這裡是你能量的源頭。當門關起來或面臨決策時，靈活的乙木會退下，換上霸氣的壬水將軍。這是一把雙面刃：用得好是開疆闢土，用不好則傷人傷己。",
+                attributes: [
+                    { label: "超頻運作 (Overclocking)", value: "核心始終處於 High Frequency 狀態。意志力極強，決策邏輯具「不可逆性」。MG 般的焦慮感源於此處能量內爆。" },
+                    { label: "Root 權限 (Autonomy)", value: "拒絕微觀管理 (Micro-management)。必須擁有完全的掌控權才能運作。無法忍受被低效率或無邏輯之人指揮。" },
+                    { label: "強強聯手 (Alliance)", value: "夫妻宮坐羊刃。拒絕依賴與撒嬌。尋求能並肩作戰的隊友。弱者遭嫌棄，強者遭反擊（若意圖壓制）。" }
+                ],
+                solution: "【能量轉化協議】將水（焦慮/能量）導入木（系統/架構）。將「控制欲」轉化為「系統控制力」。"
+            },
+            career: {
+                title: "職涯定位：解決方案架構師",
+                desc: "戰場在「商業邏輯」與「技術落地」的中間。不是砌磚頭的工程師 (Builder)，而是畫藍圖的設計者 (Architect)。",
+                comparison: [
+                    { role: "工程師", feature: "被系統管理 / 寫 Code", status: "困龍 (煩躁/大材小用)" },
+                    { role: "架構師", feature: "設計系統管理 / 畫藍圖", status: "通關 (成就/掌控全局)" }
+                ],
+                archetypes: [
+                    { name: "都水使者", desc: "治理氾濫能量，建設水利工程 (李冰)" },
+                    { name: "軍師祭酒", desc: "軍隊系統建立者，以軍法代人治 (諸葛亮)" },
+                    { name: "工部尚書", desc: "國家建設總監，技術官僚權威" }
+                ]
+            },
+            script: [
+                { phase: "v1.0 (Debug)", time: "現在 (1-2年)", title: "轉型陣痛：編譯中", desc: "更換作業系統。忍受笨蛋與新技術的挫折 (React/BI)。每一次痛苦都是在為自動化寫代碼。任務：不要放棄轉型。" },
+                { phase: "v1.1 (Refactor)", time: "未來 (3-5年)", title: "系統重構：自動化", desc: "數據成為武器。不再靠情緒罵人，而是用儀表板管理。身分轉變為「懂技術的商業權威」。" },
+                { phase: "v1.2 (Legacy)", time: "晚年 (45+)", title: "生態系建立：水利工程", desc: "巨大的水庫灌溉森林。從勞力交換轉為「系統/知識授權」。留下方法論與SOP。" },
+                { phase: "v2.0 (Next)", time: "未來版本", title: "版本繼承：優雅開局", desc: "今生修好的 Bug (能量控制)，是來世的預設功能。現在的修煉 (寫好 Code)，是為了下個版本的流暢運行。" }
+            ]
+        };
 
         // --- Main Component ---
 
         const App = () => {
-            const [tab, setTab] = useState('rhythm'); // rhythm, specs, check, space
+            const [tab, setTab] = useState('rhythm'); // Default to Rhythm, pilot is now at the end
             
             // Current Rhythm Phase Calculation
             const hour = new Date().getHours();
@@ -115,16 +154,20 @@
             const [checkedItems, setCheckedItems] = useState({});
 
             useEffect(() => {
-                const saved = localStorage.getItem('flight_manual_checklist');
-                const savedDate = localStorage.getItem('flight_manual_date');
-                const today = new Date().toDateString();
-                
-                if (saved && savedDate === today) {
-                    setCheckedItems(JSON.parse(saved));
-                } else {
-                    // Reset on new day
-                    localStorage.setItem('flight_manual_date', today);
-                    setCheckedItems({});
+                try {
+                    const saved = localStorage.getItem('flight_manual_checklist');
+                    const savedDate = localStorage.getItem('flight_manual_date');
+                    const today = new Date().toDateString();
+                    
+                    if (saved && savedDate === today) {
+                        setCheckedItems(JSON.parse(saved));
+                    } else {
+                        // Reset on new day
+                        localStorage.setItem('flight_manual_date', today);
+                        setCheckedItems({});
+                    }
+                } catch (e) {
+                    console.error("Storage access error:", e);
                 }
             }, []);
 
@@ -150,7 +193,7 @@
                             </div>
                         </div>
                         <div className="text-[10px] text-slate-500 font-mono">
-                            v4.6
+                            v5.1 Pilot Kernel
                         </div>
                     </header>
 
@@ -168,15 +211,15 @@
                             <ClipboardCheck size={16} />
                             <span className="text-[9px] font-bold">CHECK</span>
                         </button>
-                        <button onClick={() => setTab('space')} className={`py-2 rounded flex flex-col items-center justify-center gap-1 transition-all ${tab === 'space' ? 'bg-amber-500/20 text-amber-400 shadow-lg shadow-amber-500/10' : 'text-slate-500 hover:text-slate-300'}`}>
-                            <Layout size={16} />
-                            <span className="text-[9px] font-bold">SPACE</span>
+                        <button onClick={() => setTab('pilot')} className={`py-2 rounded flex flex-col items-center justify-center gap-1 transition-all ${tab === 'pilot' ? 'bg-rose-500/20 text-rose-400 shadow-lg shadow-rose-500/10' : 'text-slate-500 hover:text-slate-300'}`}>
+                            <User size={16} />
+                            <span className="text-[9px] font-bold">PILOT</span>
                         </button>
                     </div>
 
                     {/* Content Area */}
                     <main className="space-y-6">
-                        
+
                         {/* 1. RHYTHM */}
                         {tab === 'rhythm' && (
                             <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -298,49 +341,118 @@
                             </div>
                         )}
 
-                        {/* 4. SPACE */}
-                        {tab === 'space' && (
+                        {/* 4. PILOT (Moved to End) */}
+                        {tab === 'pilot' && (
                             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl">
-                                    <h3 className="text-amber-400 font-bold flex items-center gap-2 mb-2">
-                                        <Layout size={18} /> SPATIAL CONFIGURATION
-                                    </h3>
-                                    <p className="text-xs text-amber-200/70 leading-relaxed">
-                                        環境即心智的外化。透過控制物理空間，直接調節心理狀態。
+                                
+                                {/* Core Identity */}
+                                <div className="bg-slate-900/80 border border-rose-500/30 p-5 rounded-xl relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-2 opacity-10">
+                                        <Fingerprint size={100} className="text-rose-500"/>
+                                    </div>
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <Fingerprint size={18} className="text-rose-400" />
+                                        <h3 className="text-sm font-bold text-rose-400 tracking-wider">CORE IDENTITY (核心代碼)</h3>
+                                    </div>
+                                    <h2 className="text-xl font-bold text-slate-100 mb-2">{pilotData.core.title}</h2>
+                                    <p className="text-sm text-slate-400 leading-relaxed mb-4">{pilotData.core.desc}</p>
+                                    <div className="flex gap-2">
+                                        {pilotData.core.tags.map(tag => (
+                                            <span key={tag} className="text-[10px] font-mono px-2 py-1 rounded bg-rose-500/10 border border-rose-500/20 text-rose-300">#{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Kernel Layer (Yang Ren) - NEW */}
+                                <div className="bg-gradient-to-br from-rose-950/40 to-slate-900 border border-rose-500/50 p-5 rounded-xl shadow-lg shadow-rose-900/10">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div>
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <Flame size={16} className="text-rose-500 animate-pulse" />
+                                                <h3 className="text-xs font-bold text-rose-400 tracking-[0.2em]">{pilotData.kernel.title}</h3>
+                                            </div>
+                                            <div className="text-[10px] font-mono text-rose-300/50">{pilotData.kernel.subtitle}</div>
+                                        </div>
+                                        <div className="px-2 py-1 bg-rose-500 text-slate-950 text-[10px] font-bold rounded animate-pulse">HIGH VOLTAGE</div>
+                                    </div>
+                                    
+                                    <p className="text-sm text-slate-300 leading-relaxed mb-6 border-l-2 border-rose-500/50 pl-3">
+                                        {pilotData.kernel.desc}
                                     </p>
+
+                                    <div className="space-y-3">
+                                        {pilotData.kernel.attributes.map((attr, i) => (
+                                            <div key={i} className="bg-slate-950/60 p-3 rounded border border-rose-500/20 flex flex-col gap-1">
+                                                <span className="text-rose-400 font-bold text-xs">{attr.label}</span>
+                                                <span className="text-xs text-slate-400">{attr.value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-4 pt-3 border-t border-rose-500/20 text-xs flex items-start gap-2 text-rose-300/80 bg-rose-500/5 p-2 rounded">
+                                        <Lock size={14} className="shrink-0 mt-0.5" />
+                                        <span>{pilotData.kernel.solution}</span>
+                                    </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {spatialData.map((item, i) => (
-                                        <div key={i} className="bg-slate-900/50 border border-slate-800 p-5 rounded-xl flex flex-col gap-2">
-                                            <h4 className="text-sky-400 font-bold text-sm flex items-center gap-2">
-                                                <span className="w-5 h-5 rounded-full bg-sky-500/20 flex items-center justify-center text-[10px] border border-sky-500/50">{i+1}</span>
-                                                {item.title}
-                                            </h4>
-                                            <p className="text-xs text-slate-400 leading-relaxed pl-7">{item.desc}</p>
+                                {/* Career Path */}
+                                <div className="space-y-3">
+                                    <div className="flex items-center gap-2 px-1">
+                                        <GitBranch size={16} className="text-sky-400" />
+                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">CAREER NAVIGATION (職涯路徑)</h3>
+                                    </div>
+                                    <div className="bg-slate-900/50 border border-slate-800 p-5 rounded-xl">
+                                        <div className="mb-4">
+                                            <h4 className="font-bold text-sky-400 mb-1">{pilotData.career.title}</h4>
+                                            <p className="text-xs text-slate-400">{pilotData.career.desc}</p>
                                         </div>
-                                    ))}
-                                </div>
+                                        
+                                        <div className="grid grid-cols-2 gap-3 mb-4">
+                                            {pilotData.career.comparison.map((c, i) => (
+                                                <div key={i} className={`p-3 rounded border ${i === 0 ? 'bg-slate-950/50 border-slate-800 opacity-60' : 'bg-sky-950/20 border-sky-500/30'}`}>
+                                                    <div className="text-[10px] font-mono text-slate-500 mb-1">{i === 0 ? 'DON\'T' : 'DO'}</div>
+                                                    <div className={`font-bold text-sm mb-1 ${i === 0 ? 'text-slate-400' : 'text-sky-300'}`}>{c.role}</div>
+                                                    <div className="text-[10px] text-slate-500">{c.feature}</div>
+                                                    <div className={`text-[10px] font-bold mt-1 ${i === 0 ? 'text-rose-500' : 'text-emerald-500'}`}>{c.status}</div>
+                                                </div>
+                                            ))}
+                                        </div>
 
-                                <div className="bg-slate-950 p-5 rounded-xl border border-dashed border-slate-700">
-                                    <h4 className="text-xs font-bold text-slate-300 mb-4 uppercase tracking-widest flex items-center gap-2">
-                                        <Grid size={14}/> Zone Definition
-                                    </h4>
-                                    <div className="space-y-4">
-                                        <div className="flex gap-4">
-                                            <div className="w-16 text-[10px] font-bold text-indigo-400 py-1 bg-indigo-500/10 text-center rounded h-fit border border-indigo-500/30">FUNCTIONAL</div>
-                                            <div className="text-xs text-slate-400 flex-1 border-l border-slate-800 pl-4">書桌：最多 3 樣物品。保持絕對淨空。這是戰鬥艙。</div>
-                                        </div>
-                                        <div className="flex gap-4">
-                                            <div className="w-16 text-[10px] font-bold text-rose-400 py-1 bg-rose-500/10 text-center rounded h-fit border border-rose-500/30">REPAIR</div>
-                                            <div className="text-xs text-slate-400 flex-1 border-l border-slate-800 pl-4">床鋪：修復區。禁止任何工作相關物品入侵。</div>
-                                        </div>
-                                        <div className="flex gap-4">
-                                            <div className="w-16 text-[10px] font-bold text-emerald-400 py-1 bg-emerald-500/10 text-center rounded h-fit border border-emerald-500/30">FLOW</div>
-                                            <div className="text-xs text-slate-400 flex-1 border-l border-slate-800 pl-4">收納：採用 1+1 備品制。看得見才存在。</div>
+                                        <div className="border-t border-slate-800 pt-3">
+                                            <div className="text-[10px] text-slate-500 mb-2 font-mono">ARCHETYPES (古代原型)</div>
+                                            <div className="space-y-2">
+                                                {pilotData.career.archetypes.map((a, i) => (
+                                                    <div key={i} className="flex items-baseline gap-2 text-xs">
+                                                        <span className="text-indigo-400 font-bold whitespace-nowrap">[{a.name}]</span>
+                                                        <span className="text-slate-400">{a.desc}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* The Script */}
+                                <div className="space-y-3">
+                                    <div className="flex items-center gap-2 px-1">
+                                        <History size={16} className="text-amber-400" />
+                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">LIFE SCRIPT (人生劇本)</h3>
+                                    </div>
+                                    <div className="relative border-l border-slate-800 ml-3 space-y-6 py-2">
+                                        {pilotData.script.map((s, i) => (
+                                            <div key={i} className="pl-6 relative group">
+                                                <div className={`absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full border-2 ${i === 0 ? 'bg-amber-500 border-amber-500 animate-pulse' : i === 3 ? 'bg-slate-900 border-indigo-500' : 'bg-slate-900 border-slate-600'}`}></div>
+                                                <div className="flex items-baseline gap-2 mb-1">
+                                                    <span className={`text-[10px] font-mono px-1.5 rounded border ${i === 0 ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' : i === 3 ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30' : 'bg-slate-800 text-slate-500 border-slate-700'}`}>{s.phase}</span>
+                                                    <span className="text-[10px] text-slate-600">{s.time}</span>
+                                                </div>
+                                                <h4 className={`font-bold text-sm mb-1 ${i === 0 ? 'text-slate-200' : 'text-slate-400'}`}>{s.title}</h4>
+                                                <p className="text-xs text-slate-500 leading-relaxed group-hover:text-slate-300 transition-colors">{s.desc}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
                             </div>
                         )}
 
