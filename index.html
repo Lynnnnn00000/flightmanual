@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -127,6 +127,14 @@
                     { name: "都水使者", desc: "治理氾濫能量，建設水利工程 (李冰)" },
                     { name: "軍師祭酒", desc: "軍隊系統建立者，以軍法代人治 (諸葛亮)" },
                     { name: "工部尚書", desc: "國家建設總監，技術官僚權威" }
+                ]
+            },
+            sideQuests: {
+                title: "SIDE QUESTS (共鳴檢測)",
+                desc: "為什麼你覺得這些「好酷」？因為它們是你內在程式碼的「實體版」投射。",
+                items: [
+                    { name: "城市設計 (Urban Design)", match: "95%", desc: "這是「系統架構」的物理版。規劃人流＝規劃資料流；分區＝模組化。你喜歡的不是蓋樓，而是建立「宏觀秩序」。" },
+                    { name: "古蹟修復 (Restoration)", match: "90%", desc: "這是「重構舊代碼 (Refactoring)」。需要讀懂前人的邏輯（學者型），並用技術修復 Bug。且「跑來跑去」完美釋放了你羊刃的動能。" }
                 ]
             },
             maintenance: {
@@ -201,7 +209,7 @@
                             </div>
                         </div>
                         <div className="text-[10px] text-slate-500 font-mono">
-                            v5.4 Maintenance Protocol
+                            v5.5 Side Quests
                         </div>
                     </header>
 
@@ -403,7 +411,7 @@
                                     </div>
                                 </div>
 
-                                {/* Maintenance Protocol - NEW */}
+                                {/* Maintenance Protocol */}
                                 <div className="bg-teal-950/30 border border-teal-500/30 p-5 rounded-xl">
                                     <h3 className="text-teal-400 font-bold text-sm mb-1 flex items-center gap-2">
                                         <Activity size={16} />
@@ -424,6 +432,30 @@
                                                 <p className="text-xs text-slate-300 mb-2 leading-snug">{s.purpose}</p>
                                                 <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Action</div>
                                                 <p className="text-xs text-slate-400 leading-snug">{s.action}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Side Quests (NEW) */}
+                                <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                                    <h3 className="text-violet-400 font-bold text-sm mb-1 flex items-center gap-2">
+                                        <Compass size={16} />
+                                        {pilotData.sideQuests.title}
+                                    </h3>
+                                    <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.sideQuests.desc}</p>
+                                    
+                                    <div className="space-y-3">
+                                        {pilotData.sideQuests.items.map((item, i) => (
+                                            <div key={i} className="flex gap-3 bg-slate-900/50 p-3 rounded border border-slate-800 hover:border-violet-500/30 transition-colors">
+                                                <div className="flex flex-col items-center justify-center w-12 shrink-0 border-r border-slate-800 pr-3">
+                                                    <div className="text-[10px] font-mono text-violet-300">MATCH</div>
+                                                    <div className="text-lg font-bold text-violet-400">{item.match}</div>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-slate-200 text-sm mb-1">{item.name}</h4>
+                                                    <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
