@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -168,6 +168,27 @@
                     }
                 ]
             },
+            alliance: {
+                title: "ALLIANCE PROTOCOL (僚機協議)",
+                desc: "夫妻宮坐羊刃。感情不是必需品，而是「戰略級的聯盟」。",
+                strategies: [
+                    { 
+                        title: "強強聯手 (Power Couple)", 
+                        icon: Users,
+                        content: "你需要的不是「被照顧」，而是「被理解」。你需要一個能跟你比拼智力、能量對等的隊友。弱者會讓你感到厭煩，因為他們跟不上你的航速。" 
+                    },
+                    { 
+                        title: "濾網理論 (The Filter)", 
+                        icon: HeartHandshake,
+                        content: "你的職業發展就是最好的「濾網」。如果你停在地面（低強度工作），你只會遇到地面的人。只有當你飛到「架構師」的高度，你才能在雷達上掃描到其他正在飛行的「僚機」。專注事業，就是對感情最大的負責。" 
+                    },
+                    { 
+                        title: "高度法則 (Altitude Principle)", 
+                        icon: ArrowUpCircle,
+                        content: "飛得越高，亂流越少。當你達到平流層（架構師高度），工作與感情不再是「零和遊戲」（爭奪時間），而是「互補效應」（資源共享）。你的成就感會成為感情的燃料，而不是負擔。" 
+                    }
+                ]
+            },
             maintenance: {
                 title: "SYSTEM MAINTENANCE (維護協議)",
                 desc: "高壓反應爐需要定期停機冷卻。你的休假不是為了「玩」，而是為了「修復護盾」與「校準系統」。",
@@ -240,7 +261,7 @@
                             </div>
                         </div>
                         <div className="text-[10px] text-slate-500 font-mono">
-                            v6.0 Integrated Navigation
+                            v6.3 Optimized Sort
                         </div>
                     </header>
 
@@ -485,22 +506,7 @@
                                         </div>
                                     </div>
 
-                                    {/* 2.2 Decision Support (Strategy) */}
-                                    <div className="grid grid-cols-1 gap-3">
-                                        {pilotData.decision.cards.map((card, i) => (
-                                            <div key={i} className={`bg-slate-900/80 border ${card.border} p-4 rounded-xl flex gap-4`}>
-                                                <div className={`p-2 rounded-lg h-fit ${card.bg} ${card.color}`}>
-                                                    <card.icon size={20} />
-                                                </div>
-                                                <div>
-                                                    <h4 className={`font-bold text-sm mb-1 ${card.color}`}>{card.title}</h4>
-                                                    <p className="text-xs text-slate-400 leading-relaxed">{card.content}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* 2.3 Side Quests (Validation) */}
+                                    {/* 2.2 Side Quests (Validation) - MOVED UP */}
                                     <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl">
                                         <h3 className="text-violet-400 font-bold text-sm mb-1 flex items-center gap-2">
                                             <Compass size={16} />
@@ -518,6 +524,44 @@
                                                     <div>
                                                         <h4 className="font-bold text-slate-200 text-sm mb-1">{item.name}</h4>
                                                         <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* 2.3 Decision Support (Strategy) - MOVED DOWN */}
+                                    <div className="grid grid-cols-1 gap-3">
+                                        {pilotData.decision.cards.map((card, i) => (
+                                            <div key={i} className={`bg-slate-900/80 border ${card.border} p-4 rounded-xl flex gap-4`}>
+                                                <div className={`p-2 rounded-lg h-fit ${card.bg} ${card.color}`}>
+                                                    <card.icon size={20} />
+                                                </div>
+                                                <div>
+                                                    <h4 className={`font-bold text-sm mb-1 ${card.color}`}>{card.title}</h4>
+                                                    <p className="text-xs text-slate-400 leading-relaxed">{card.content}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* 2.4 Alliance Protocol (NEW) */}
+                                    <div className="bg-pink-950/20 border border-pink-500/30 p-5 rounded-xl">
+                                        <h3 className="text-pink-400 font-bold text-sm mb-1 flex items-center gap-2">
+                                            <HeartHandshake size={16} />
+                                            {pilotData.alliance.title}
+                                        </h3>
+                                        <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.alliance.desc}</p>
+                                        
+                                        <div className="grid grid-cols-1 gap-3">
+                                            {pilotData.alliance.strategies.map((s, i) => (
+                                                <div key={i} className="bg-slate-950/60 p-3 rounded border border-pink-500/20 flex gap-3">
+                                                    <div className="p-2 bg-pink-500/10 rounded text-pink-400 h-fit">
+                                                        <s.icon size={16} />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="font-bold text-pink-300 text-xs mb-1">{s.title}</h4>
+                                                        <p className="text-xs text-slate-400 leading-relaxed">{s.content}</p>
                                                     </div>
                                                 </div>
                                             ))}
