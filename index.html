@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -82,7 +82,7 @@
         const diagnostics = [
             { obs: "對晨間日記/冥想毫無動力，雖是大眾推薦的好習慣。", analysis: "【引擎不相容】MG 引擎是「回應制」。面對空白紙張硬寫日記屬於「發起」，會導致引擎空轉。冥想要求關閉雷達，違反高敏偵測的天性。", fix: "改用「戰術板」：看著選項做反應（勾選/刪除），而非無中生有。" },
             { obs: "被評價為「難以掌握/難相處」，但我只是實事求是。", analysis: "【導航者特質】這不是 Bug，是導航系統的「自動校正」功能。系統優先級：事實 > 人情。當發現邏輯錯誤時，會本能拒絕執行錯誤指令。", fix: "接受設定：你是「參謀/架構師」，本來就不適合當盲從的兵。" },
-            { obs: "一直在糾結是否該移民北歐，覺得現在的環境太吵雜。", analysis: "【環境誤判】你渴望的不是寒冷的氣候，而是「邊界感」。北歐只是一個「低語境文化」的代名詞。當你成為制定規則的架構師，你就在創造自己的「數位北歐」。", fix: "境隨心轉：用系統阻隔人治干擾。你的 Dashboard 就是你的國界。" }
+            { obs: "不再糾結是否要搬去印度或北歐，人生有了新的盼頭。", analysis: "【系統已鎖定】這是內核升級的證明。你意識到「逃避（物理移動）」無法解決「能量過剩（心理焦慮）」的問題。唯有「構建系統（升維思考）」才是終極解法。", fix: "MISSION STATUS: COURSE LOCKED. 繼續保持當前航向，拒絕雜訊干擾。" }
         ];
 
         const checklistData = {
@@ -193,7 +193,7 @@
                 title: "SYSTEM MAINTENANCE (維護協議)",
                 desc: "高壓反應爐需要定期停機冷卻。你的休假不是為了「玩」，而是為了「修復護盾」與「校準系統」。",
                 strategies: [
-                    { type: "遠程校準 (北歐行)", purpose: "去確認藍圖。親身體驗什麼是「極致的系統化社會」。", action: "執行三項考察：1. 體驗無人化服務，感受不求人的流暢。2. 在圖書館感受「互不打擾」的舒適。3. 記錄「實體 UX」：不拍風景，只拍指示牌、地貼動線、防呆設計。這些是高效社會的 Source Code。", icon: Plane },
+                    { type: "遠程校準 (北歐行)", purpose: "去確認藍圖。親身體驗什麼是「極致的系統化社會」。這不是「逃避」，而是「選修課」。", action: "執行三項考察：1. 體驗無人化服務，感受不求人的流暢。2. 在圖書館感受「互不打擾」的舒適。3. 記錄「實體 UX」：不拍風景，只拍指示牌、地貼動線、防呆設計。這些是高效社會的 Source Code。", icon: Plane },
                     { type: "在地重組 (越南/近程)", purpose: "對抗高熵增 (Entropy)。在混亂的環境中，刻意尋找「低噪點」的孤島。", action: "避開人擠人。選擇高單價、極靜謐的 Resort。帶書不帶手機。執行「數位排毒」。", icon: Mountain }
                 ]
             },
@@ -260,8 +260,13 @@
                                 <p className="text-[10px] text-slate-500">OPERATIONAL GUIDELINES</p>
                             </div>
                         </div>
-                        <div className="text-[10px] text-slate-500 font-mono">
-                            v6.3 Optimized Sort
+                        <div className="flex items-center gap-2">
+                            <div className="px-2 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded text-[10px] text-emerald-400 font-bold flex items-center gap-1 animate-pulse">
+                                <Target size={10} /> COURSE LOCKED
+                            </div>
+                            <div className="text-[10px] text-slate-500 font-mono">
+                                v6.4
+                            </div>
                         </div>
                     </header>
 
