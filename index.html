@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -131,18 +131,49 @@
             },
             sideQuests: {
                 title: "SIDE QUESTS (共鳴檢測)",
-                desc: "為什麼你覺得這些「好酷」？因為它們是你內在程式碼的「實體版」投射。",
+                desc: "為什麼你覺得這些「好酷」？因為它們是你內在程式碼的「實體版」投射。這證明你的「架構師」屬性是天生的。",
                 items: [
-                    { name: "城市設計 (Urban Design)", match: "95%", desc: "這是「系統架構」的物理版。規劃人流＝規劃資料流；分區＝模組化。你喜歡的不是蓋樓，而是建立「宏觀秩序」。" },
-                    { name: "古蹟修復 (Restoration)", match: "90%", desc: "這是「重構舊代碼 (Refactoring)」。需要讀懂前人的邏輯（學者型），並用技術修復 Bug。且「跑來跑去」完美釋放了你羊刃的動能。" }
+                    { name: "城市設計 (Urban Design)", match: "95%", desc: "系統架構的物理版。規劃人流＝規劃資料流。證明你熱愛的是「宏觀秩序」。" },
+                    { name: "古蹟修復 (Restoration)", match: "90%", desc: "重構舊代碼 (Refactoring)。證明你擁有讀懂前人邏輯（學者）與修復 Bug 的耐心。" },
+                    { name: "供應鏈架構師 (Supply Chain)", match: "92%", desc: "物流版的水利工程。證明你擅長掌控複雜流動與突發狀況（將軍）。" }
+                ]
+            },
+            decision: {
+                title: "DECISION SUPPORT (決策輔助)",
+                desc: "綜合運算後的最佳路徑規劃與心理建議。",
+                cards: [
+                    { 
+                        title: "最佳路徑 (The Winner)", 
+                        icon: Anchor, 
+                        color: "text-emerald-400", 
+                        bg: "bg-emerald-500/10",
+                        border: "border-emerald-500/30",
+                        content: "【RevOps / Solutions Architect】。這不是轉行，而是「進化」。直接繼承商業經驗（水），用技術（木）變現。阻力最小，成功率最高。" 
+                    },
+                    { 
+                        title: "技能策略 (Skill Strategy)", 
+                        icon: Layers, 
+                        color: "text-amber-400", 
+                        bg: "bg-amber-500/10",
+                        border: "border-amber-500/30",
+                        content: "【T型架構：深核廣用】。只需沈浸式投入「系統思維 (System Thinking)」。其他（Coding/城市設計）都是應用場景。不要當工具人，要當畫圖的人。" 
+                    },
+                    { 
+                        title: "心理健康 (Mental Health)", 
+                        icon: HeartPulse, 
+                        color: "text-rose-400", 
+                        bg: "bg-rose-500/10",
+                        border: "border-rose-500/30",
+                        content: "【反直覺診斷】高強度不是壓力，『低效與混亂』才是壓力。去「制度混亂」的公司會讓你生病；去「重視邏輯」的地方反而讓你平靜。你的藥方是「秩序」，不是「休息」。" 
+                    }
                 ]
             },
             maintenance: {
                 title: "SYSTEM MAINTENANCE (維護協議)",
                 desc: "高壓反應爐需要定期停機冷卻。你的休假不是為了「玩」，而是為了「修復護盾」與「校準系統」。",
                 strategies: [
-                    { type: "遠程校準 (北歐行)", purpose: "去確認藍圖。親身體驗什麼是「極致的系統化社會」。這不是旅遊，是去下載「環境參數」回來閱讀。", action: "執行三項考察：1. 體驗無人化服務，感受不求人的流暢。2. 在圖書館感受「互不打擾」的舒適。3. 記錄「實體 UX」：不拍風景，只拍指示牌、地貼動線、防呆設計。這些是高效社會的 Source Code。", icon: Plane },
-                    { type: "在地重組 (越南/近程)", purpose: "對抗高熵增 (Entropy)。在混亂的環境中，刻意尋找「低噪點」的孤島 (Da Lat / Private Resort)。", action: "避開人擠人。選擇高單價、極靜謐的 Resort。帶書不帶手機。執行「數位排毒」。", icon: Mountain }
+                    { type: "遠程校準 (北歐行)", purpose: "去確認藍圖。親身體驗什麼是「極致的系統化社會」。", action: "執行三項考察：1. 體驗無人化服務，感受不求人的流暢。2. 在圖書館感受「互不打擾」的舒適。3. 記錄「實體 UX」：不拍風景，只拍指示牌、地貼動線、防呆設計。這些是高效社會的 Source Code。", icon: Plane },
+                    { type: "在地重組 (越南/近程)", purpose: "對抗高熵增 (Entropy)。在混亂的環境中，刻意尋找「低噪點」的孤島。", action: "避開人擠人。選擇高單價、極靜謐的 Resort。帶書不帶手機。執行「數位排毒」。", icon: Mountain }
                 ]
             },
             script: [
@@ -209,7 +240,7 @@
                             </div>
                         </div>
                         <div className="text-[10px] text-slate-500 font-mono">
-                            v5.5 Side Quests
+                            v6.0 Integrated Navigation
                         </div>
                     </header>
 
@@ -361,115 +392,72 @@
                         {tab === 'pilot' && (
                             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                                 
-                                {/* Core Identity */}
-                                <div className="bg-slate-900/80 border border-rose-500/30 p-5 rounded-xl relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-2 opacity-10">
-                                        <Fingerprint size={100} className="text-rose-500"/>
-                                    </div>
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <Fingerprint size={18} className="text-rose-400" />
-                                        <h3 className="text-sm font-bold text-rose-400 tracking-wider">CORE IDENTITY (核心代碼)</h3>
-                                    </div>
-                                    <h2 className="text-xl font-bold text-slate-100 mb-2">{pilotData.core.title}</h2>
-                                    <p className="text-sm text-slate-400 leading-relaxed mb-4">{pilotData.core.desc}</p>
-                                    <div className="flex gap-2">
-                                        {pilotData.core.tags.map(tag => (
-                                            <span key={tag} className="text-[10px] font-mono px-2 py-1 rounded bg-rose-500/10 border border-rose-500/20 text-rose-300">#{tag}</span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Kernel Layer (Yang Ren) */}
-                                <div className="bg-gradient-to-br from-rose-950/40 to-slate-900 border border-rose-500/50 p-5 rounded-xl shadow-lg shadow-rose-900/10">
-                                    <div className="flex justify-between items-start mb-4">
-                                        <div>
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <Flame size={16} className="text-rose-500 animate-pulse" />
-                                                <h3 className="text-xs font-bold text-rose-400 tracking-[0.2em]">{pilotData.kernel.title}</h3>
-                                            </div>
-                                            <div className="text-[10px] font-mono text-rose-300/50">{pilotData.kernel.subtitle}</div>
+                                {/* SECTION 1: THE ENGINE */}
+                                <div className="space-y-6">
+                                    {/* Core Identity */}
+                                    <div className="bg-slate-900/80 border border-rose-500/30 p-5 rounded-xl relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 p-2 opacity-10">
+                                            <Fingerprint size={100} className="text-rose-500"/>
                                         </div>
-                                        <div className="px-2 py-1 bg-rose-500 text-slate-950 text-[10px] font-bold rounded animate-pulse">HIGH VOLTAGE</div>
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <Fingerprint size={18} className="text-rose-400" />
+                                            <h3 className="text-sm font-bold text-rose-400 tracking-wider">THE ENGINE (動力核心)</h3>
+                                        </div>
+                                        <h2 className="text-xl font-bold text-slate-100 mb-2">{pilotData.core.title}</h2>
+                                        <p className="text-sm text-slate-400 leading-relaxed mb-4">{pilotData.core.desc}</p>
+                                        <div className="flex gap-2">
+                                            {pilotData.core.tags.map(tag => (
+                                                <span key={tag} className="text-[10px] font-mono px-2 py-1 rounded bg-rose-500/10 border border-rose-500/20 text-rose-300">#{tag}</span>
+                                            ))}
+                                        </div>
                                     </div>
-                                    
-                                    <p className="text-sm text-slate-300 leading-relaxed mb-6 border-l-2 border-rose-500/50 pl-3">
-                                        {pilotData.kernel.desc}
-                                    </p>
 
-                                    <div className="space-y-3">
-                                        {pilotData.kernel.attributes.map((attr, i) => (
-                                            <div key={i} className="bg-slate-950/60 p-3 rounded border border-rose-500/20 flex flex-col gap-1">
-                                                <span className="text-rose-400 font-bold text-xs">{attr.label}</span>
-                                                <span className="text-xs text-slate-400">{attr.value}</span>
+                                    {/* Kernel Layer (Yang Ren) */}
+                                    <div className="bg-gradient-to-br from-rose-950/40 to-slate-900 border border-rose-500/50 p-5 rounded-xl shadow-lg shadow-rose-900/10">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div>
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <Flame size={16} className="text-rose-500 animate-pulse" />
+                                                    <h3 className="text-xs font-bold text-rose-400 tracking-[0.2em]">{pilotData.kernel.title}</h3>
+                                                </div>
+                                                <div className="text-[10px] font-mono text-rose-300/50">{pilotData.kernel.subtitle}</div>
                                             </div>
-                                        ))}
-                                    </div>
+                                            <div className="px-2 py-1 bg-rose-500 text-slate-950 text-[10px] font-bold rounded animate-pulse">HIGH VOLTAGE</div>
+                                        </div>
+                                        
+                                        <p className="text-sm text-slate-300 leading-relaxed mb-6 border-l-2 border-rose-500/50 pl-3">
+                                            {pilotData.kernel.desc}
+                                        </p>
 
-                                    <div className="mt-4 pt-3 border-t border-rose-500/20 text-xs flex items-start gap-2 text-rose-300/80 bg-rose-500/5 p-2 rounded">
-                                        <Lock size={14} className="shrink-0 mt-0.5" />
-                                        <span>{pilotData.kernel.solution}</span>
+                                        <div className="space-y-3">
+                                            {pilotData.kernel.attributes.map((attr, i) => (
+                                                <div key={i} className="bg-slate-950/60 p-3 rounded border border-rose-500/20 flex flex-col gap-1">
+                                                    <span className="text-rose-400 font-bold text-xs">{attr.label}</span>
+                                                    <span className="text-xs text-slate-400">{attr.value}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-4 pt-3 border-t border-rose-500/20 text-xs flex items-start gap-2 text-rose-300/80 bg-rose-500/5 p-2 rounded">
+                                            <Lock size={14} className="shrink-0 mt-0.5" />
+                                            <span>{pilotData.kernel.solution}</span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Maintenance Protocol */}
-                                <div className="bg-teal-950/30 border border-teal-500/30 p-5 rounded-xl">
-                                    <h3 className="text-teal-400 font-bold text-sm mb-1 flex items-center gap-2">
-                                        <Activity size={16} />
-                                        {pilotData.maintenance.title}
-                                    </h3>
-                                    <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.maintenance.desc}</p>
-                                    
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                        {pilotData.maintenance.strategies.map((s, i) => (
-                                            <div key={i} className="bg-slate-950/60 p-3 rounded border border-teal-500/20 flex flex-col">
-                                                <div className="flex items-center gap-2 mb-2">
-                                                    <div className="p-1.5 bg-teal-500/20 rounded text-teal-400">
-                                                        <s.icon size={14} />
-                                                    </div>
-                                                    <h4 className="font-bold text-teal-300 text-xs">{s.type}</h4>
-                                                </div>
-                                                <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Purpose</div>
-                                                <p className="text-xs text-slate-300 mb-2 leading-snug">{s.purpose}</p>
-                                                <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Action</div>
-                                                <p className="text-xs text-slate-400 leading-snug">{s.action}</p>
-                                            </div>
-                                        ))}
+                                {/* SECTION 2: FLIGHT PATH (NAVIGATION) */}
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-2 px-1 border-b border-slate-800 pb-2 mb-2">
+                                        <MapPin size={16} className="text-sky-400" />
+                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">FLIGHT PATH (航務導航)</h3>
                                     </div>
-                                </div>
 
-                                {/* Side Quests (NEW) */}
-                                <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl">
-                                    <h3 className="text-violet-400 font-bold text-sm mb-1 flex items-center gap-2">
-                                        <Compass size={16} />
-                                        {pilotData.sideQuests.title}
-                                    </h3>
-                                    <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.sideQuests.desc}</p>
-                                    
-                                    <div className="space-y-3">
-                                        {pilotData.sideQuests.items.map((item, i) => (
-                                            <div key={i} className="flex gap-3 bg-slate-900/50 p-3 rounded border border-slate-800 hover:border-violet-500/30 transition-colors">
-                                                <div className="flex flex-col items-center justify-center w-12 shrink-0 border-r border-slate-800 pr-3">
-                                                    <div className="text-[10px] font-mono text-violet-300">MATCH</div>
-                                                    <div className="text-lg font-bold text-violet-400">{item.match}</div>
-                                                </div>
-                                                <div>
-                                                    <h4 className="font-bold text-slate-200 text-sm mb-1">{item.name}</h4>
-                                                    <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Career Path */}
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-2 px-1">
-                                        <GitBranch size={16} className="text-sky-400" />
-                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">CAREER NAVIGATION (職涯路徑)</h3>
-                                    </div>
+                                    {/* 2.1 Career Path (Definition) */}
                                     <div className="bg-slate-900/50 border border-slate-800 p-5 rounded-xl">
                                         <div className="mb-4">
-                                            <h4 className="font-bold text-sky-400 mb-1">{pilotData.career.title}</h4>
+                                            <h4 className="font-bold text-sky-400 mb-1 flex items-center gap-2">
+                                                <GitBranch size={16}/> {pilotData.career.title}
+                                            </h4>
                                             <p className="text-xs text-slate-400">{pilotData.career.desc}</p>
                                         </div>
                                         
@@ -496,13 +484,84 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    {/* 2.2 Decision Support (Strategy) */}
+                                    <div className="grid grid-cols-1 gap-3">
+                                        {pilotData.decision.cards.map((card, i) => (
+                                            <div key={i} className={`bg-slate-900/80 border ${card.border} p-4 rounded-xl flex gap-4`}>
+                                                <div className={`p-2 rounded-lg h-fit ${card.bg} ${card.color}`}>
+                                                    <card.icon size={20} />
+                                                </div>
+                                                <div>
+                                                    <h4 className={`font-bold text-sm mb-1 ${card.color}`}>{card.title}</h4>
+                                                    <p className="text-xs text-slate-400 leading-relaxed">{card.content}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* 2.3 Side Quests (Validation) */}
+                                    <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                                        <h3 className="text-violet-400 font-bold text-sm mb-1 flex items-center gap-2">
+                                            <Compass size={16} />
+                                            {pilotData.sideQuests.title}
+                                        </h3>
+                                        <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.sideQuests.desc}</p>
+                                        
+                                        <div className="space-y-3">
+                                            {pilotData.sideQuests.items.map((item, i) => (
+                                                <div key={i} className="flex gap-3 bg-slate-900/50 p-3 rounded border border-slate-800 hover:border-violet-500/30 transition-colors">
+                                                    <div className="flex flex-col items-center justify-center w-12 shrink-0 border-r border-slate-800 pr-3">
+                                                        <div className="text-[10px] font-mono text-violet-300">MATCH</div>
+                                                        <div className="text-lg font-bold text-violet-400">{item.match}</div>
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="font-bold text-slate-200 text-sm mb-1">{item.name}</h4>
+                                                        <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
 
-                                {/* The Script */}
+                                {/* SECTION 3: MAINTENANCE */}
+                                <div className="space-y-2">
+                                    <div className="flex items-center gap-2 px-1 border-b border-slate-800 pb-2 mb-2">
+                                        <Anchor size={16} className="text-teal-400" />
+                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">MAINTENANCE (維護協議)</h3>
+                                    </div>
+                                    <div className="bg-teal-950/30 border border-teal-500/30 p-5 rounded-xl">
+                                        <h3 className="text-teal-400 font-bold text-sm mb-1 flex items-center gap-2">
+                                            <Activity size={16} />
+                                            {pilotData.maintenance.title}
+                                        </h3>
+                                        <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.maintenance.desc}</p>
+                                        
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                            {pilotData.maintenance.strategies.map((s, i) => (
+                                                <div key={i} className="bg-slate-950/60 p-3 rounded border border-teal-500/20 flex flex-col">
+                                                    <div className="flex items-center gap-2 mb-2">
+                                                        <div className="p-1.5 bg-teal-500/20 rounded text-teal-400">
+                                                            <s.icon size={14} />
+                                                        </div>
+                                                        <h4 className="font-bold text-teal-300 text-xs">{s.type}</h4>
+                                                    </div>
+                                                    <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Purpose</div>
+                                                    <p className="text-xs text-slate-300 mb-2 leading-snug">{s.purpose}</p>
+                                                    <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Action</div>
+                                                    <p className="text-xs text-slate-400 leading-snug">{s.action}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* SECTION 4: THE LOG */}
                                 <div className="space-y-3">
-                                    <div className="flex items-center gap-2 px-1">
+                                    <div className="flex items-center gap-2 px-1 border-b border-slate-800 pb-2 mb-2">
                                         <History size={16} className="text-amber-400" />
-                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">LIFE SCRIPT (人生劇本)</h3>
+                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">FLIGHT LOG (航行日誌)</h3>
                                     </div>
                                     <div className="relative border-l border-slate-800 ml-3 space-y-6 py-2">
                                         {pilotData.script.map((s, i) => (
