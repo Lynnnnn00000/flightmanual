@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -129,6 +129,14 @@
                     { name: "工部尚書", desc: "國家建設總監，技術官僚權威" }
                 ]
             },
+            maintenance: {
+                title: "SYSTEM MAINTENANCE (維護協議)",
+                desc: "高壓反應爐需要定期停機冷卻。你的休假不是為了「玩」，而是為了「修復護盾」與「校準系統」。",
+                strategies: [
+                    { type: "遠程校準 (北歐行)", purpose: "去確認藍圖。親身體驗什麼是「極致的系統化社會」。這不是旅遊，是去下載「環境參數」回來閱讀。", action: "觀察街道設計、體驗無人服務、享受邊界感。去看看「未來」長什麼樣子。", icon: Plane },
+                    { type: "在地重組 (越南/近程)", purpose: "對抗高熵增 (Entropy)。在混亂的環境中，刻意尋找「低噪點」的孤島 (Da Lat / Private Resort)。", action: "避開人擠人。選擇高單價、極靜謐的 Resort。帶書不帶手機。執行「數位排毒」。", icon: Mountain }
+                ]
+            },
             script: [
                 { phase: "v1.0 (Debug)", time: "現在 (1-2年)", title: "轉型陣痛：編譯中", desc: "更換作業系統。忍受笨蛋與新技術的挫折 (React/BI)。每一次痛苦都是在為自動化寫代碼。任務：不要放棄轉型。" },
                 { phase: "v1.1 (Refactor)", time: "未來 (3-5年)", title: "系統重構：自動化", desc: "數據成為武器。不再靠情緒罵人，而是用儀表板管理。身分轉變為「懂技術的商業權威」。" },
@@ -193,7 +201,7 @@
                             </div>
                         </div>
                         <div className="text-[10px] text-slate-500 font-mono">
-                            v5.1 Pilot Kernel
+                            v5.2 Maintenance Protocol
                         </div>
                     </header>
 
@@ -363,7 +371,7 @@
                                     </div>
                                 </div>
 
-                                {/* Kernel Layer (Yang Ren) - NEW */}
+                                {/* Kernel Layer (Yang Ren) */}
                                 <div className="bg-gradient-to-br from-rose-950/40 to-slate-900 border border-rose-500/50 p-5 rounded-xl shadow-lg shadow-rose-900/10">
                                     <div className="flex justify-between items-start mb-4">
                                         <div>
@@ -392,6 +400,32 @@
                                     <div className="mt-4 pt-3 border-t border-rose-500/20 text-xs flex items-start gap-2 text-rose-300/80 bg-rose-500/5 p-2 rounded">
                                         <Lock size={14} className="shrink-0 mt-0.5" />
                                         <span>{pilotData.kernel.solution}</span>
+                                    </div>
+                                </div>
+
+                                {/* Maintenance Protocol - NEW */}
+                                <div className="bg-teal-950/30 border border-teal-500/30 p-5 rounded-xl">
+                                    <h3 className="text-teal-400 font-bold text-sm mb-1 flex items-center gap-2">
+                                        <Activity size={16} />
+                                        {pilotData.maintenance.title}
+                                    </h3>
+                                    <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.maintenance.desc}</p>
+                                    
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        {pilotData.maintenance.strategies.map((s, i) => (
+                                            <div key={i} className="bg-slate-950/60 p-3 rounded border border-teal-500/20 flex flex-col">
+                                                <div className="flex items-center gap-2 mb-2">
+                                                    <div className="p-1.5 bg-teal-500/20 rounded text-teal-400">
+                                                        <s.icon size={14} />
+                                                    </div>
+                                                    <h4 className="font-bold text-teal-300 text-xs">{s.type}</h4>
+                                                </div>
+                                                <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Purpose</div>
+                                                <p className="text-xs text-slate-300 mb-2 leading-snug">{s.purpose}</p>
+                                                <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Action</div>
+                                                <p className="text-xs text-slate-400 leading-snug">{s.action}</p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
 
