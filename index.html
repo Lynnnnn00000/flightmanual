@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target, ShieldCheck
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -115,6 +115,24 @@
                     { label: "強強聯手 (Alliance)", value: "夫妻宮坐羊刃。拒絕依賴與撒嬌。尋求能並肩作戰的隊友。弱者遭嫌棄，強者遭反擊（若意圖壓制）。" }
                 ],
                 solution: "【能量轉化協議】將水（焦慮/能量）導入木（系統/架構）。將「控制欲」轉化為「系統控制力」。"
+            },
+            patches: {
+                title: "SYSTEM PATCHES (系統補丁)",
+                desc: "已修復的舊版 Bug 與思維邏輯更新。無需再為此消耗算力。",
+                items: [
+                    { 
+                        bug: "對他人「不負責任」感到憤怒煩躁", 
+                        fix: "判定為：零件故障 (Noise)", 
+                        logic: "對方的人品問題是「外部故障」，不是你的系統錯誤。不需要動氣教育，只需啟動「SOP 隔離協議」。用規則排除，保持高壓電與低壓零件的絕緣。",
+                        status: "PATCHED"
+                    },
+                    { 
+                        bug: "對「還不會做的事」感到焦慮恐慌", 
+                        fix: "判定為：升級任務 (Quest)", 
+                        logic: "對於高運算核心（你）來說，焦慮＝飢餓感。這不是能力不足，是「CPU 需要數據」。立即開始學習 (Input)，焦慮會瞬間轉化為興奮動能。",
+                        status: "PATCHED"
+                    }
+                ]
             },
             career: {
                 title: "職涯定位：解決方案架構師",
@@ -265,7 +283,7 @@
                                 <Target size={10} /> COURSE LOCKED
                             </div>
                             <div className="text-[10px] text-slate-500 font-mono">
-                                v6.4
+                                v6.6 Patched
                             </div>
                         </div>
                     </header>
@@ -469,6 +487,36 @@
                                             <span>{pilotData.kernel.solution}</span>
                                         </div>
                                     </div>
+
+                                    {/* System Patches (NEW) */}
+                                    <div className="bg-emerald-950/20 border border-emerald-500/30 p-5 rounded-xl">
+                                        <h3 className="text-emerald-400 font-bold text-sm mb-3 flex items-center gap-2">
+                                            <ShieldCheck size={16} />
+                                            {pilotData.patches.title}
+                                        </h3>
+                                        <p className="text-xs text-slate-400 mb-4">{pilotData.patches.desc}</p>
+                                        
+                                        <div className="space-y-3">
+                                            {pilotData.patches.items.map((item, i) => (
+                                                <div key={i} className="bg-slate-950/60 p-3 rounded border border-emerald-500/20 relative overflow-hidden group">
+                                                    <div className="absolute right-0 top-0 bg-emerald-500 text-slate-950 text-[9px] font-bold px-1.5 py-0.5 rounded-bl">{item.status}</div>
+                                                    <div className="flex flex-col gap-2">
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                                                            <span className="text-xs text-rose-400 line-through decoration-rose-500/50 decoration-2">{item.bug}</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                                            <span className="text-xs text-emerald-400 font-bold">{item.fix}</span>
+                                                        </div>
+                                                        <p className="text-xs text-slate-400 border-t border-emerald-500/10 pt-2 mt-1 leading-relaxed">
+                                                            {item.logic}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {/* SECTION 2: FLIGHT PATH (NAVIGATION) */}
@@ -511,7 +559,7 @@
                                         </div>
                                     </div>
 
-                                    {/* 2.2 Side Quests (Validation) - MOVED UP */}
+                                    {/* 2.2 Side Quests (Validation) */}
                                     <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl">
                                         <h3 className="text-violet-400 font-bold text-sm mb-1 flex items-center gap-2">
                                             <Compass size={16} />
@@ -535,7 +583,7 @@
                                         </div>
                                     </div>
 
-                                    {/* 2.3 Decision Support (Strategy) - MOVED DOWN */}
+                                    {/* 2.3 Decision Support (Strategy) */}
                                     <div className="grid grid-cols-1 gap-3">
                                         {pilotData.decision.cards.map((card, i) => (
                                             <div key={i} className={`bg-slate-900/80 border ${card.border} p-4 rounded-xl flex gap-4`}>
