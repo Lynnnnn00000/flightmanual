@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target, ShieldCheck
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target, ShieldCheck, Sparkles, Check
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -104,6 +104,12 @@
                 title: "核心代碼：大水流向系統",
                 desc: "命盤終極邏輯：你是一座核反應爐（申子辰水局），能量過剩是原廠設定。唯一解法是建立「系統（甲木）」，將混亂能量轉化為有序結構。靠「人」會累死，靠「機制」才會發財。",
                 tags: ["High Voltage", "羊刃將軍", "反人治"]
+            },
+            maya: {
+                title: "SOUL TOTEM (靈魂圖騰)：黃星星",
+                desc: "瑪雅曆：Yellow Star (Lamat)。能量本質：「美麗、優雅、藝術」。這解釋了你對「混亂與醜陋」的零容忍。你的任務是將「理念」化為「實相」，把混亂的公司變成優雅的系統。",
+                location: "智利 (Chile) / 安地斯山脈",
+                meaning: "象徵「高海拔的清晰視野」。這不是叫你搬去智利，而是提醒你：做任何決定時，請用「美感」作為過濾器。如果是粗俗、混亂的，請遠離；如果是清晰、優雅的，請靠近。"
             },
             kernel: {
                 title: "KERNEL LAYER (運算內核)：壬子羊刃",
@@ -219,7 +225,8 @@
                 { phase: "v1.0 (Debug)", time: "現在 (1-2年)", title: "轉型陣痛：編譯中", desc: "更換作業系統。忍受笨蛋與新技術的挫折 (React/BI)。每一次痛苦都是在為自動化寫代碼。任務：不要放棄轉型。" },
                 { phase: "v1.1 (Refactor)", time: "未來 (3-5年)", title: "系統重構：自動化", desc: "數據成為武器。不再靠情緒罵人，而是用儀表板管理。身分轉變為「懂技術的商業權威」。" },
                 { phase: "v1.2 (Legacy)", time: "晚年 (45+)", title: "生態系建立：水利工程", desc: "巨大的水庫灌溉森林。從勞力交換轉為「系統/知識授權」。留下方法論與SOP。" },
-                { phase: "v2.0 (Next)", time: "未來版本", title: "版本繼承：優雅開局", desc: "今生修好的 Bug (能量控制)，是來世的預設功能。現在的修煉 (寫好 Code)，是為了下個版本的流暢運行。" }
+                { phase: "v2.0 (Next)", time: "未來版本", title: "版本繼承：優雅開局", desc: "今生修好的 Bug (能量控制)，是來世的預設功能。現在的修煉 (寫好 Code)，是為了下個版本的流暢運行。" },
+                { phase: "FINAL CHECK (確認事項)", time: "當前狀態", title: "關於「北歐」的最終定論", desc: "北歐不再是「目的地」，而是「選修課」。你不需要移民去尋找秩序，因為你已經具備「建立秩序」的能力。你的系統就是你的護照。你已經自由了。", special: true }
             ]
         };
 
@@ -283,7 +290,7 @@
                                 <Target size={10} /> COURSE LOCKED
                             </div>
                             <div className="text-[10px] text-slate-500 font-mono">
-                                v6.6 Patched
+                                v6.9 Final Check
                             </div>
                         </div>
                     </header>
@@ -453,6 +460,31 @@
                                             {pilotData.core.tags.map(tag => (
                                                 <span key={tag} className="text-[10px] font-mono px-2 py-1 rounded bg-rose-500/10 border border-rose-500/20 text-rose-300">#{tag}</span>
                                             ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Maya Totem (NEW) */}
+                                    <div className="bg-yellow-950/30 border border-yellow-500/30 p-5 rounded-xl relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 p-2 opacity-10">
+                                            <Sparkles size={80} className="text-yellow-500"/>
+                                        </div>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div>
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <Sparkles size={16} className="text-yellow-400 animate-pulse" />
+                                                    <h3 className="text-xs font-bold text-yellow-400 tracking-[0.2em]">{pilotData.maya.title}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-sm text-slate-300 leading-relaxed mb-4">
+                                            {pilotData.maya.desc}
+                                        </p>
+                                        <div className="flex items-start gap-2 bg-yellow-500/10 p-2 rounded border border-yellow-500/20 mb-2">
+                                            <MapPin size={14} className="text-yellow-400 shrink-0 mt-0.5" />
+                                            <div className="text-xs text-slate-400">
+                                                <span className="text-yellow-200 font-bold">能量場：{pilotData.maya.location}</span><br/>
+                                                {pilotData.maya.meaning}
+                                            </div>
                                         </div>
                                     </div>
 
@@ -670,6 +702,11 @@
                                                 </div>
                                                 <h4 className={`font-bold text-sm mb-1 ${i === 0 ? 'text-slate-200' : 'text-slate-400'}`}>{s.title}</h4>
                                                 <p className="text-xs text-slate-500 leading-relaxed group-hover:text-slate-300 transition-colors">{s.desc}</p>
+                                                {s.special && (
+                                                    <div className="mt-2 text-[10px] text-emerald-400 border-t border-slate-700/50 pt-2 flex items-center gap-1.5">
+                                                        <Check size={10} /> {s.desc}
+                                                    </div>
+                                                )}
                                             </div>
                                         ))}
                                     </div>
