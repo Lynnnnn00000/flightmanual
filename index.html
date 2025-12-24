@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target, ShieldCheck, Sparkles, Check
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target, ShieldCheck, Sparkles, Check, Globe2, Dumbbell, Info, Wrench, FileText, Link, BatteryCharging, BrainCircuit, Headphones, Sofa
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -72,11 +72,41 @@
         ];
 
         const specs = [
-            { title: "核心引擎：MG 薦骨動力", icon: Zap, color: "text-orange-400", desc: "非線性、爆發型能量。嚴禁強制啟動，需等待「回應」點火。適合短時間高強度衝刺，必須搭配頻繁的冷卻重置。" },
-            { title: "導航系統：學者型雷達", icon: Map, color: "text-indigo-400", desc: "高度依賴「視覺化地圖」。需要「大地圖」提供安全感，但需要「開放領空」進行自由探索。邏輯與結構是系統安定的關鍵。" },
-            { title: "燃料系統：視覺化庫存", icon: Eye, color: "text-cyan-400", desc: "視覺協議與空間動線。建立「零阻力動線」（物品手伸即得）與「1+1 備品制」。維持桌面 80% 留白。看不見＝不存在，零雜物＝零焦慮。" },
-            { title: "裝甲護盾：4/6 高敏塗層", icon: Shield, color: "text-emerald-400", desc: "需求：「低語境」互動（少人情、多規則）。「北歐」是心理座標而非地理座標。透過系統化管理，你能在任何地方建立自己的「虛擬北歐」。" },
-            { title: "主要任務：系統架構師", icon: Server, color: "text-rose-400", desc: "將混亂轉化為秩序。核心職能：文件化 (Documentation)、後台運營 (Ops)、資料支援。非前線作戰單位，而是戰略骨幹。" }
+            { 
+                title: "核心引擎：MG 薦骨動力", 
+                icon: Zap, 
+                color: "text-orange-400", 
+                desc: "非線性、爆發型能量。嚴禁強制啟動，需等待「回應」點火。適合短時間高強度衝刺，必須搭配頻繁的冷卻重置。",
+                link: "PILOT > CORE > KERNEL LAYER"
+            },
+            { 
+                title: "導航系統：學者型雷達", 
+                icon: Map, 
+                color: "text-indigo-400", 
+                desc: "高度依賴「視覺化地圖」。需要「大地圖」提供安全感，但需要「開放領空」進行自由探索。邏輯與結構是系統安定的關鍵。",
+                link: "PILOT > PATH > CAREER & SIDE QUESTS"
+            },
+            { 
+                title: "燃料系統：視覺化庫存", 
+                icon: Eye, 
+                color: "text-cyan-400", 
+                desc: "視覺協議與空間動線。建立「零阻力動線」（物品手伸即得）與「1+1 備品制」。維持桌面 80% 留白。看不見＝不存在，零雜物＝零焦慮。",
+                link: "PILOT > MAINT > DAILY STANDBY"
+            },
+            { 
+                title: "裝甲護盾：4/6 高敏塗層", 
+                icon: Shield, 
+                color: "text-emerald-400", 
+                desc: "需求：「低語境」互動（少人情、多規則）。「北歐」是心理座標而非地理座標。透過系統化管理，你能在任何地方建立自己的「虛擬北歐」。",
+                link: "PILOT > MAINT > SYSTEM MAINTENANCE"
+            },
+            { 
+                title: "主要任務：系統架構師", 
+                icon: Server, 
+                color: "text-rose-400", 
+                desc: "將混亂轉化為秩序。核心職能：文件化 (Documentation)、後台運營 (Ops)、資料支援。非前線作戰單位，而是戰略骨幹。",
+                link: "PILOT > PATH > CAREER NAVIGATION"
+            }
         ];
 
         const diagnostics = [
@@ -101,15 +131,9 @@
 
         const pilotData = {
             core: {
-                title: "核心代碼：大水流向系統",
-                desc: "命盤終極邏輯：你是一座核反應爐（申子辰水局），能量過剩是原廠設定。唯一解法是建立「系統（甲木）」，將混亂能量轉化為有序結構。靠「人」會累死，靠「機制」才會發財。",
-                tags: ["High Voltage", "羊刃將軍", "反人治"]
-            },
-            maya: {
-                title: "SOUL TOTEM (靈魂圖騰)：黃星星",
-                desc: "瑪雅曆：Yellow Star (Lamat)。能量本質：「美麗、優雅、藝術」。這解釋了你對「混亂與醜陋」的零容忍。你的任務是將「理念」化為「實相」，把混亂的公司變成優雅的系統。",
-                location: "智利 (Chile) / 安地斯山脈",
-                meaning: "象徵「高海拔的清晰視野」。這不是叫你搬去智利，而是提醒你：做任何決定時，請用「美感」作為過濾器。如果是粗俗、混亂的，請遠離；如果是清晰、優雅的，請靠近。"
+                title: "核心代碼：雙核動力系統 (Dual-Core Propulsion)",
+                desc: "命盤終極邏輯：你是一座「配備核動力泵浦的超級水利工程」。\n• 動力源 (Input)：壬子（核反應爐）提供無限動能。\n• 蓄能池 (Storage)：申子辰（高壓水庫）累積龐大勢能。\n• 轉換器 (Output)：你的唯一任務是建立「甲木發電機組（系統/架構）」。\n\n系統守則：焦慮源於「滿庫溢流」。靠「人治」會導致潰堤（情緒爆炸），唯有靠「機制」才能將恐怖的位能高效轉化為電力（價值）。",
+                tags: ["Dual-Core Propulsion", "Nuclear Pump", "High-Pressure Reservoir"]
             },
             kernel: {
                 title: "KERNEL LAYER (運算內核)：壬子羊刃",
@@ -121,6 +145,12 @@
                     { label: "強強聯手 (Alliance)", value: "夫妻宮坐羊刃。拒絕依賴與撒嬌。尋求能並肩作戰的隊友。弱者遭嫌棄，強者遭反擊（若意圖壓制）。" }
                 ],
                 solution: "【能量轉化協議】將水（焦慮/能量）導入木（系統/架構）。將「控制欲」轉化為「系統控制力」。"
+            },
+            maya: {
+                title: "SOUL TOTEM (靈魂圖騰)：黃星星",
+                desc: "瑪雅曆：Yellow Star (Lamat)。能量本質：「美麗、優雅、藝術」。這解釋了你對「混亂與醜陋」的零容忍。你的任務是將「理念」化為「實相」，把混亂的公司變成優雅的系統。",
+                location: "智利 (Chile) / 安地斯山脈",
+                meaning: "象徵「高海拔的清晰視野」。這不是叫你搬去智利，而是提醒你：做任何決定時，請用「美感」作為過濾器。如果是粗俗、混亂的，請遠離；如果是清晰、優雅的，請靠近。"
             },
             patches: {
                 title: "SYSTEM PATCHES (系統補丁)",
@@ -213,6 +243,73 @@
                     }
                 ]
             },
+            duality: {
+                title: "PROJECT: DUALITY (雙極計畫)",
+                desc: "將旅行視為「系統升級專案」。這不是逃避，而是為了下載「環境參數」以校準內在系統。",
+                missions: [
+                    { 
+                        name: "模組 A：挪威 (Norway)", 
+                        subtitle: "SYSTEM AUDIT (系統審計)",
+                        purpose: "【遠程校準】觀察「社會秩序」的極致。學習「減法」與「無痛管理」。這不是旅遊，是去下載「環境參數」。",
+                        action: "帶著「審計筆記本」，記錄那些「看不見的規則」。體驗什麼叫「安靜的效率」。",
+                        tasks: [
+                            "觀察動線：奧斯陸歌劇院如何用空間引導人群（不強制）。",
+                            "體驗無人化：嘗試全程不開口完成交通/購物（低語境）。",
+                            "感受邊界：在峽灣觀察水如何被山脈完美限制（物理隱喻）。"
+                        ],
+                        prep: "體能：日行 2萬步的城市耐久力。 資源：高門檻預算策略（買時間與體驗）。",
+                        color: "text-emerald-400",
+                        bg: "bg-emerald-950/30",
+                        border: "border-emerald-500/20",
+                        icon: Globe2
+                    },
+                    { 
+                        name: "模組 B：智利 (Chile)", 
+                        subtitle: "ENERGY GROUNDING (能量接地)",
+                        purpose: "【在地重組的終極版】觀察「自然秩序」的極致。啟動「黃星星」圖騰，接引地氣。",
+                        action: "在阿塔卡馬看星空（混亂中的秩序）。在百內塔看邊界（意志力的具象化）。",
+                        tasks: [
+                            "視覺衝擊：親眼見證「甲木（百內塔）」直插雲霄的震撼。",
+                            "星空校準：在 ALMA 感受「混亂中的極致秩序」。",
+                            "垂直深耕：在聖地牙哥感受被高山深海夾擊的能量。",
+                        ],
+                        prep: "體能：負重深蹲與爬樓梯（練核心）。 資源：預約稀缺資源（山屋/天文台）。",
+                        color: "text-rose-400",
+                        bg: "bg-rose-950/30",
+                        border: "border-rose-500/20",
+                        icon: Mountain
+                    }
+                ],
+                daily: {
+                    title: "DAILY MAINTENANCE PROTOCOL (日常維護協議)",
+                    desc: "日常待機不是發呆，而是「動態清理」。",
+                    items: [
+                        {
+                            type: "物理釋放 (Physical Venting)",
+                            target: "針對薦骨能量 (MG)",
+                            action: "深蹲 20 分鐘 / Zone 2 快走。目的：把煩躁排出身體。",
+                            icon: BatteryCharging
+                        },
+                        {
+                            type: "腦力導流 (Mental Channeling)",
+                            target: "針對壬水思緒 (Scholar)",
+                            action: "整理 Notion / 優化檔案命名 / 研究裝備。目的：把水導入木（建立微型秩序）。",
+                            icon: BrainCircuit
+                        },
+                        {
+                            type: "感官隔離 (Sensory Isolation)",
+                            target: "針對高敏特質 (HSP)",
+                            action: "降噪耳機 / 獨處一小時 / 拒絕無效社交。目的：修復護盾。",
+                            icon: Headphones
+                        }
+                    ],
+                    localReset: {
+                        title: "在地重組 (Local Reset)",
+                        desc: "【週末專案】離開日常環境（如去大叻/高品質 Resort）。執行「數位排毒」。這是為了系統重啟 (Reboot)，不只是清理緩存。",
+                        icon: Sofa
+                    }
+                }
+            },
             maintenance: {
                 title: "SYSTEM MAINTENANCE (維護協議)",
                 desc: "高壓反應爐需要定期停機冷卻。你的休假不是為了「玩」，而是為了「修復護盾」與「校準系統」。",
@@ -233,8 +330,9 @@
         // --- Main Component ---
 
         const App = () => {
-            const [tab, setTab] = useState('rhythm'); // Default to Rhythm, pilot is now at the end
-            
+            const [tab, setTab] = useState('rhythm'); // Default to Rhythm
+            const [pilotTab, setPilotTab] = useState('core'); // core, path, maint, log
+
             // Current Rhythm Phase Calculation
             const hour = new Date().getHours();
             let currentPhaseId = "rest";
@@ -245,6 +343,15 @@
             // Checklist Logic (LocalStorage)
             const [checklistMode, setChecklistMode] = useState('takeoff');
             const [checkedItems, setCheckedItems] = useState({});
+            
+            // Handle pilot tab change from specs
+            const handleSpecLink = (link) => {
+                setTab('pilot');
+                if (link.includes('CORE')) setPilotTab('core');
+                else if (link.includes('PATH')) setPilotTab('path');
+                else if (link.includes('MAINT')) setPilotTab('maint');
+                else if (link.includes('LOG')) setPilotTab('log');
+            };
 
             useEffect(() => {
                 try {
@@ -290,7 +397,7 @@
                                 <Target size={10} /> COURSE LOCKED
                             </div>
                             <div className="text-[10px] text-slate-500 font-mono">
-                                v6.9 Final Check
+                                v7.5 Optimized
                             </div>
                         </div>
                     </header>
@@ -368,9 +475,15 @@
                                             <div className={`p-3 rounded-lg bg-slate-950 border border-slate-800 ${item.color}`}>
                                                 <item.icon size={20} />
                                             </div>
-                                            <div>
+                                            <div className="flex-1">
                                                 <h4 className={`font-bold text-sm ${item.color} mb-1`}>{item.title}</h4>
-                                                <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                                                <p className="text-xs text-slate-400 leading-relaxed mb-2">{item.desc}</p>
+                                                <button 
+                                                    onClick={() => handleSpecLink(item.link)}
+                                                    className="text-[10px] flex items-center gap-1 text-slate-500 hover:text-sky-400 transition-colors bg-slate-950/50 px-2 py-1 rounded border border-slate-800 w-fit"
+                                                >
+                                                    <Link size={10} /> {item.link}
+                                                </button>
                                             </div>
                                         </div>
                                     ))}
@@ -439,278 +552,325 @@
                             </div>
                         )}
 
-                        {/* 4. PILOT (Moved to End) */}
+                        {/* 4. PILOT DASHBOARD (Refactored) */}
                         {tab === 'pilot' && (
                             <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                                 
-                                {/* SECTION 1: THE ENGINE */}
-                                <div className="space-y-6">
-                                    {/* Core Identity */}
-                                    <div className="bg-slate-900/80 border border-rose-500/30 p-5 rounded-xl relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 p-2 opacity-10">
-                                            <Fingerprint size={100} className="text-rose-500"/>
-                                        </div>
-                                        <div className="flex items-center gap-2 mb-3">
-                                            <Fingerprint size={18} className="text-rose-400" />
-                                            <h3 className="text-sm font-bold text-rose-400 tracking-wider">THE ENGINE (動力核心)</h3>
-                                        </div>
-                                        <h2 className="text-xl font-bold text-slate-100 mb-2">{pilotData.core.title}</h2>
-                                        <p className="text-sm text-slate-400 leading-relaxed mb-4">{pilotData.core.desc}</p>
-                                        <div className="flex gap-2">
-                                            {pilotData.core.tags.map(tag => (
-                                                <span key={tag} className="text-[10px] font-mono px-2 py-1 rounded bg-rose-500/10 border border-rose-500/20 text-rose-300">#{tag}</span>
-                                            ))}
-                                        </div>
+                                {/* 4.0 Core Identity (Always Visible) */}
+                                <div className="bg-slate-900/80 border border-rose-500/30 p-5 rounded-xl relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-2 opacity-10">
+                                        <Fingerprint size={100} className="text-rose-500"/>
                                     </div>
-
-                                    {/* Maya Totem (NEW) */}
-                                    <div className="bg-yellow-950/30 border border-yellow-500/30 p-5 rounded-xl relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 p-2 opacity-10">
-                                            <Sparkles size={80} className="text-yellow-500"/>
-                                        </div>
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div>
-                                                <div className="flex items-center gap-2 mb-1">
-                                                    <Sparkles size={16} className="text-yellow-400 animate-pulse" />
-                                                    <h3 className="text-xs font-bold text-yellow-400 tracking-[0.2em]">{pilotData.maya.title}</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p className="text-sm text-slate-300 leading-relaxed mb-4">
-                                            {pilotData.maya.desc}
-                                        </p>
-                                        <div className="flex items-start gap-2 bg-yellow-500/10 p-2 rounded border border-yellow-500/20 mb-2">
-                                            <MapPin size={14} className="text-yellow-400 shrink-0 mt-0.5" />
-                                            <div className="text-xs text-slate-400">
-                                                <span className="text-yellow-200 font-bold">能量場：{pilotData.maya.location}</span><br/>
-                                                {pilotData.maya.meaning}
-                                            </div>
-                                        </div>
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <Fingerprint size={18} className="text-rose-400" />
+                                        <h3 className="text-sm font-bold text-rose-400 tracking-wider">PILOT PROFILE</h3>
                                     </div>
-
-                                    {/* Kernel Layer (Yang Ren) */}
-                                    <div className="bg-gradient-to-br from-rose-950/40 to-slate-900 border border-rose-500/50 p-5 rounded-xl shadow-lg shadow-rose-900/10">
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div>
-                                                <div className="flex items-center gap-2 mb-1">
-                                                    <Flame size={16} className="text-rose-500 animate-pulse" />
-                                                    <h3 className="text-xs font-bold text-rose-400 tracking-[0.2em]">{pilotData.kernel.title}</h3>
-                                                </div>
-                                                <div className="text-[10px] font-mono text-rose-300/50">{pilotData.kernel.subtitle}</div>
-                                            </div>
-                                            <div className="px-2 py-1 bg-rose-500 text-slate-950 text-[10px] font-bold rounded animate-pulse">HIGH VOLTAGE</div>
-                                        </div>
-                                        
-                                        <p className="text-sm text-slate-300 leading-relaxed mb-6 border-l-2 border-rose-500/50 pl-3">
-                                            {pilotData.kernel.desc}
-                                        </p>
-
-                                        <div className="space-y-3">
-                                            {pilotData.kernel.attributes.map((attr, i) => (
-                                                <div key={i} className="bg-slate-950/60 p-3 rounded border border-rose-500/20 flex flex-col gap-1">
-                                                    <span className="text-rose-400 font-bold text-xs">{attr.label}</span>
-                                                    <span className="text-xs text-slate-400">{attr.value}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-
-                                        <div className="mt-4 pt-3 border-t border-rose-500/20 text-xs flex items-start gap-2 text-rose-300/80 bg-rose-500/5 p-2 rounded">
-                                            <Lock size={14} className="shrink-0 mt-0.5" />
-                                            <span>{pilotData.kernel.solution}</span>
-                                        </div>
-                                    </div>
-
-                                    {/* System Patches (NEW) */}
-                                    <div className="bg-emerald-950/20 border border-emerald-500/30 p-5 rounded-xl">
-                                        <h3 className="text-emerald-400 font-bold text-sm mb-3 flex items-center gap-2">
-                                            <ShieldCheck size={16} />
-                                            {pilotData.patches.title}
-                                        </h3>
-                                        <p className="text-xs text-slate-400 mb-4">{pilotData.patches.desc}</p>
-                                        
-                                        <div className="space-y-3">
-                                            {pilotData.patches.items.map((item, i) => (
-                                                <div key={i} className="bg-slate-950/60 p-3 rounded border border-emerald-500/20 relative overflow-hidden group">
-                                                    <div className="absolute right-0 top-0 bg-emerald-500 text-slate-950 text-[9px] font-bold px-1.5 py-0.5 rounded-bl">{item.status}</div>
-                                                    <div className="flex flex-col gap-2">
-                                                        <div className="flex items-center gap-2">
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
-                                                            <span className="text-xs text-rose-400 line-through decoration-rose-500/50 decoration-2">{item.bug}</span>
-                                                        </div>
-                                                        <div className="flex items-center gap-2">
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
-                                                            <span className="text-xs text-emerald-400 font-bold">{item.fix}</span>
-                                                        </div>
-                                                        <p className="text-xs text-slate-400 border-t border-emerald-500/10 pt-2 mt-1 leading-relaxed">
-                                                            {item.logic}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
+                                    <h2 className="text-xl font-bold text-slate-100 mb-2">{pilotData.core.title}</h2>
+                                    <p className="text-sm text-slate-400 leading-relaxed mb-4 whitespace-pre-wrap">{pilotData.core.desc}</p>
+                                    <div className="flex gap-2">
+                                        {pilotData.core.tags.map(tag => (
+                                            <span key={tag} className="text-[10px] font-mono px-2 py-1 rounded bg-rose-500/10 border border-rose-500/20 text-rose-300">#{tag}</span>
+                                        ))}
                                     </div>
                                 </div>
 
-                                {/* SECTION 2: FLIGHT PATH (NAVIGATION) */}
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-2 px-1 border-b border-slate-800 pb-2 mb-2">
-                                        <MapPin size={16} className="text-sky-400" />
-                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">FLIGHT PATH (航務導航)</h3>
-                                    </div>
+                                {/* 4.x Sub-Navigation for Pilot */}
+                                <div className="flex gap-2 border-b border-slate-800 pb-2 overflow-x-auto">
+                                    <button onClick={() => setPilotTab('core')} className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-all whitespace-nowrap ${pilotTab === 'core' ? 'bg-rose-500 text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>CORE (核心)</button>
+                                    <button onClick={() => setPilotTab('path')} className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-all whitespace-nowrap ${pilotTab === 'path' ? 'bg-sky-500 text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>PATH (航路)</button>
+                                    <button onClick={() => setPilotTab('maint')} className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-all whitespace-nowrap ${pilotTab === 'maint' ? 'bg-teal-500 text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>MAINT (維護)</button>
+                                    <button onClick={() => setPilotTab('log')} className={`px-3 py-1.5 rounded-full text-[10px] font-bold transition-all whitespace-nowrap ${pilotTab === 'log' ? 'bg-amber-500 text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>LOG (日誌)</button>
+                                </div>
 
-                                    {/* 2.1 Career Path (Definition) */}
-                                    <div className="bg-slate-900/50 border border-slate-800 p-5 rounded-xl">
-                                        <div className="mb-4">
-                                            <h4 className="font-bold text-sky-400 mb-1 flex items-center gap-2">
-                                                <GitBranch size={16}/> {pilotData.career.title}
-                                            </h4>
-                                            <p className="text-xs text-slate-400">{pilotData.career.desc}</p>
-                                        </div>
-                                        
-                                        <div className="grid grid-cols-2 gap-3 mb-4">
-                                            {pilotData.career.comparison.map((c, i) => (
-                                                <div key={i} className={`p-3 rounded border ${i === 0 ? 'bg-slate-950/50 border-slate-800 opacity-60' : 'bg-sky-950/20 border-sky-500/30'}`}>
-                                                    <div className="text-[10px] font-mono text-slate-500 mb-1">{i === 0 ? 'DON\'T' : 'DO'}</div>
-                                                    <div className={`font-bold text-sm mb-1 ${i === 0 ? 'text-slate-400' : 'text-sky-300'}`}>{c.role}</div>
-                                                    <div className="text-[10px] text-slate-500">{c.feature}</div>
-                                                    <div className={`text-[10px] font-bold mt-1 ${i === 0 ? 'text-rose-500' : 'text-emerald-500'}`}>{c.status}</div>
+                                {/* 4.1 CORE TAB */}
+                                {pilotTab === 'core' && (
+                                    <div className="space-y-6 animate-in fade-in">
+                                        {/* Kernel Layer (Yang Ren) */}
+                                        <div className="bg-gradient-to-br from-rose-950/40 to-slate-900 border border-rose-500/50 p-5 rounded-xl shadow-lg shadow-rose-900/10">
+                                            <div className="flex justify-between items-start mb-4">
+                                                <div>
+                                                    <div className="flex items-center gap-2 mb-1">
+                                                        <Flame size={16} className="text-rose-500 animate-pulse" />
+                                                        <h3 className="text-xs font-bold text-rose-400 tracking-[0.2em]">{pilotData.kernel.title}</h3>
+                                                    </div>
+                                                    <div className="text-[10px] font-mono text-rose-300/50">{pilotData.kernel.subtitle}</div>
                                                 </div>
-                                            ))}
+                                                <div className="px-2 py-1 bg-rose-500 text-slate-950 text-[10px] font-bold rounded animate-pulse">HIGH VOLTAGE</div>
+                                            </div>
+                                            <p className="text-sm text-slate-300 leading-relaxed mb-6 border-l-2 border-rose-500/50 pl-3">{pilotData.kernel.desc}</p>
+                                            <div className="space-y-3">
+                                                {pilotData.kernel.attributes.map((attr, i) => (
+                                                    <div key={i} className="bg-slate-950/60 p-3 rounded border border-rose-500/20 flex flex-col gap-1">
+                                                        <span className="text-rose-400 font-bold text-xs">{attr.label}</span>
+                                                        <span className="text-xs text-slate-400">{attr.value}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="mt-4 pt-3 border-t border-rose-500/20 text-xs flex items-start gap-2 text-rose-300/80 bg-rose-500/5 p-2 rounded">
+                                                <Lock size={14} className="shrink-0 mt-0.5" />
+                                                <span>{pilotData.kernel.solution}</span>
+                                            </div>
                                         </div>
 
-                                        <div className="border-t border-slate-800 pt-3">
-                                            <div className="text-[10px] text-slate-500 mb-2 font-mono">ARCHETYPES (古代原型)</div>
-                                            <div className="space-y-2">
-                                                {pilotData.career.archetypes.map((a, i) => (
-                                                    <div key={i} className="flex items-baseline gap-2 text-xs">
-                                                        <span className="text-indigo-400 font-bold whitespace-nowrap">[{a.name}]</span>
-                                                        <span className="text-slate-400">{a.desc}</span>
+                                        {/* Maya Totem */}
+                                        <div className="bg-yellow-950/30 border border-yellow-500/30 p-5 rounded-xl relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 p-2 opacity-10">
+                                                <Sparkles size={80} className="text-yellow-500"/>
+                                            </div>
+                                            <div className="flex justify-between items-start mb-4">
+                                                <div>
+                                                    <div className="flex items-center gap-2 mb-1">
+                                                        <Sparkles size={16} className="text-yellow-400 animate-pulse" />
+                                                        <h3 className="text-xs font-bold text-yellow-400 tracking-[0.2em]">{pilotData.maya.title}</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p className="text-sm text-slate-300 leading-relaxed mb-4">{pilotData.maya.desc}</p>
+                                            <div className="flex items-start gap-2 bg-yellow-500/10 p-2 rounded border border-yellow-500/20 mb-2">
+                                                <MapPin size={14} className="text-yellow-400 shrink-0 mt-0.5" />
+                                                <div className="text-xs text-slate-400">
+                                                    <span className="text-yellow-200 font-bold">能量場：{pilotData.maya.location}</span><br/>
+                                                    {pilotData.maya.meaning}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* System Patches */}
+                                        <div className="bg-emerald-950/20 border border-emerald-500/30 p-5 rounded-xl">
+                                            <h3 className="text-emerald-400 font-bold text-sm mb-3 flex items-center gap-2">
+                                                <ShieldCheck size={16} />
+                                                {pilotData.patches.title}
+                                            </h3>
+                                            <p className="text-xs text-slate-400 mb-4">{pilotData.patches.desc}</p>
+                                            <div className="space-y-3">
+                                                {pilotData.patches.items.map((item, i) => (
+                                                    <div key={i} className="bg-slate-950/60 p-3 rounded border border-emerald-500/20 relative overflow-hidden group">
+                                                        <div className="absolute right-0 top-0 bg-emerald-500 text-slate-950 text-[9px] font-bold px-1.5 py-0.5 rounded-bl">{item.status}</div>
+                                                        <div className="flex flex-col gap-2">
+                                                            <div className="flex items-center gap-2">
+                                                                <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                                                                <span className="text-xs text-rose-400 line-through decoration-rose-500/50 decoration-2">{item.bug}</span>
+                                                            </div>
+                                                            <div className="flex items-center gap-2">
+                                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                                                <span className="text-xs text-emerald-400 font-bold">{item.fix}</span>
+                                                            </div>
+                                                            <p className="text-xs text-slate-400 border-t border-emerald-500/10 pt-2 mt-1 leading-relaxed">{item.logic}</p>
+                                                        </div>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
+                                )}
 
-                                    {/* 2.2 Side Quests (Validation) */}
-                                    <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl">
-                                        <h3 className="text-violet-400 font-bold text-sm mb-1 flex items-center gap-2">
-                                            <Compass size={16} />
-                                            {pilotData.sideQuests.title}
-                                        </h3>
-                                        <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.sideQuests.desc}</p>
-                                        
-                                        <div className="space-y-3">
-                                            {pilotData.sideQuests.items.map((item, i) => (
-                                                <div key={i} className="flex gap-3 bg-slate-900/50 p-3 rounded border border-slate-800 hover:border-violet-500/30 transition-colors">
-                                                    <div className="flex flex-col items-center justify-center w-12 shrink-0 border-r border-slate-800 pr-3">
-                                                        <div className="text-[10px] font-mono text-violet-300">MATCH</div>
-                                                        <div className="text-lg font-bold text-violet-400">{item.match}</div>
+                                {/* 4.2 PATH TAB */}
+                                {pilotTab === 'path' && (
+                                    <div className="space-y-6 animate-in fade-in">
+                                        {/* Career Path */}
+                                        <div className="bg-slate-900/50 border border-slate-800 p-5 rounded-xl">
+                                            <div className="mb-4">
+                                                <h4 className="font-bold text-sky-400 mb-1 flex items-center gap-2">
+                                                    <GitBranch size={16}/> {pilotData.career.title}
+                                                </h4>
+                                                <p className="text-xs text-slate-400">{pilotData.career.desc}</p>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-3 mb-4">
+                                                {pilotData.career.comparison.map((c, i) => (
+                                                    <div key={i} className={`p-3 rounded border ${i === 0 ? 'bg-slate-950/50 border-slate-800 opacity-60' : 'bg-sky-950/20 border-sky-500/30'}`}>
+                                                        <div className="text-[10px] font-mono text-slate-500 mb-1">{i === 0 ? 'DON\'T' : 'DO'}</div>
+                                                        <div className={`font-bold text-sm mb-1 ${i === 0 ? 'text-slate-400' : 'text-sky-300'}`}>{c.role}</div>
+                                                        <div className="text-[10px] text-slate-500">{c.feature}</div>
+                                                        <div className={`text-[10px] font-bold mt-1 ${i === 0 ? 'text-rose-500' : 'text-emerald-500'}`}>{c.status}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="border-t border-slate-800 pt-3">
+                                                <div className="text-[10px] text-slate-500 mb-2 font-mono">ARCHETYPES (古代原型)</div>
+                                                <div className="space-y-2">
+                                                    {pilotData.career.archetypes.map((a, i) => (
+                                                        <div key={i} className="flex items-baseline gap-2 text-xs">
+                                                            <span className="text-indigo-400 font-bold whitespace-nowrap">[{a.name}]</span>
+                                                            <span className="text-slate-400">{a.desc}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Side Quests */}
+                                        <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                                            <h3 className="text-violet-400 font-bold text-sm mb-1 flex items-center gap-2">
+                                                <Compass size={16} />
+                                                {pilotData.sideQuests.title}
+                                            </h3>
+                                            <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.sideQuests.desc}</p>
+                                            <div className="space-y-3">
+                                                {pilotData.sideQuests.items.map((item, i) => (
+                                                    <div key={i} className="flex gap-3 bg-slate-900/50 p-3 rounded border border-slate-800 hover:border-violet-500/30 transition-colors">
+                                                        <div className="flex flex-col items-center justify-center w-12 shrink-0 border-r border-slate-800 pr-3">
+                                                            <div className="text-[10px] font-mono text-violet-300">MATCH</div>
+                                                            <div className="text-lg font-bold text-violet-400">{item.match}</div>
+                                                        </div>
+                                                        <div>
+                                                            <h4 className="font-bold text-slate-200 text-sm mb-1">{item.name}</h4>
+                                                            <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {/* Decision Support */}
+                                        <div className="grid grid-cols-1 gap-3">
+                                            {pilotData.decision.cards.map((card, i) => (
+                                                <div key={i} className={`bg-slate-900/80 border ${card.border} p-4 rounded-xl flex gap-4`}>
+                                                    <div className={`p-2 rounded-lg h-fit ${card.bg} ${card.color}`}>
+                                                        <card.icon size={20} />
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-bold text-slate-200 text-sm mb-1">{item.name}</h4>
-                                                        <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                                                        <h4 className={`font-bold text-sm mb-1 ${card.color}`}>{card.title}</h4>
+                                                        <p className="text-xs text-slate-400 leading-relaxed">{card.content}</p>
                                                     </div>
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
 
-                                    {/* 2.3 Decision Support (Strategy) */}
-                                    <div className="grid grid-cols-1 gap-3">
-                                        {pilotData.decision.cards.map((card, i) => (
-                                            <div key={i} className={`bg-slate-900/80 border ${card.border} p-4 rounded-xl flex gap-4`}>
-                                                <div className={`p-2 rounded-lg h-fit ${card.bg} ${card.color}`}>
-                                                    <card.icon size={20} />
+                                        {/* Alliance Protocol */}
+                                        <div className="bg-pink-950/20 border border-pink-500/30 p-5 rounded-xl">
+                                            <h3 className="text-pink-400 font-bold text-sm mb-1 flex items-center gap-2">
+                                                <HeartHandshake size={16} />
+                                                {pilotData.alliance.title}
+                                            </h3>
+                                            <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.alliance.desc}</p>
+                                            <div className="grid grid-cols-1 gap-3">
+                                                {pilotData.alliance.strategies.map((s, i) => (
+                                                    <div key={i} className="bg-slate-950/60 p-3 rounded border border-pink-500/20 flex gap-3">
+                                                        <div className="p-2 bg-pink-500/10 rounded text-pink-400 h-fit">
+                                                            <s.icon size={16} />
+                                                        </div>
+                                                        <div>
+                                                            <h4 className="font-bold text-pink-300 text-xs mb-1">{s.title}</h4>
+                                                            <p className="text-xs text-slate-400 leading-relaxed">{s.content}</p>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* 4.3 MAINT TAB */}
+                                {pilotTab === 'maint' && (
+                                    <div className="space-y-6 animate-in fade-in">
+                                        <div className="bg-teal-950/30 border border-teal-500/30 p-5 rounded-xl">
+                                            <h3 className="text-teal-400 font-bold text-sm mb-1 flex items-center gap-2">
+                                                <Activity size={16} />
+                                                {pilotData.duality.title}
+                                            </h3>
+                                            <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.duality.desc}</p>
+                                            
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                                                {pilotData.duality.missions.map((m, i) => (
+                                                    <div key={i} className={`bg-slate-950/60 p-3 rounded border ${i === 0 ? 'border-emerald-500/20' : 'border-rose-500/20'} flex flex-col`}>
+                                                        <div className="flex items-center gap-2 mb-2">
+                                                            <div className={`p-1.5 rounded ${i === 0 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}`}>
+                                                                <m.icon size={14} />
+                                                            </div>
+                                                            <h4 className={`font-bold text-xs ${i === 0 ? 'text-emerald-300' : 'text-rose-300'}`}>{m.name}</h4>
+                                                        </div>
+                                                        <div className="text-[9px] text-slate-500 font-mono mb-0.5 uppercase tracking-wider">Code</div>
+                                                        <div className="text-[10px] font-mono text-slate-400 mb-2">{m.code}</div>
+                                                        <div className="text-[9px] text-slate-500 font-mono mb-0.5 uppercase tracking-wider">Action</div>
+                                                        <p className="text-xs text-slate-300 leading-snug">{m.action}</p>
+                                                        <div className="mt-2 pt-2 border-t border-slate-700/50">
+                                                            <ul className="list-disc list-inside text-[10px] text-slate-400 space-y-0.5">
+                                                                {m.tasks.map((task, idx) => (
+                                                                    <li key={idx}>{task}</li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="bg-slate-900/50 p-3 rounded border border-teal-500/20 flex items-start gap-3">
+                                                <div className="p-1.5 bg-teal-500/10 rounded text-teal-400 mt-0.5">
+                                                    <Dumbbell size={14} />
                                                 </div>
                                                 <div>
-                                                    <h4 className={`font-bold text-sm mb-1 ${card.color}`}>{card.title}</h4>
-                                                    <p className="text-xs text-slate-400 leading-relaxed">{card.content}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* 2.4 Alliance Protocol (NEW) */}
-                                    <div className="bg-pink-950/20 border border-pink-500/30 p-5 rounded-xl">
-                                        <h3 className="text-pink-400 font-bold text-sm mb-1 flex items-center gap-2">
-                                            <HeartHandshake size={16} />
-                                            {pilotData.alliance.title}
-                                        </h3>
-                                        <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.alliance.desc}</p>
-                                        
-                                        <div className="grid grid-cols-1 gap-3">
-                                            {pilotData.alliance.strategies.map((s, i) => (
-                                                <div key={i} className="bg-slate-950/60 p-3 rounded border border-pink-500/20 flex gap-3">
-                                                    <div className="p-2 bg-pink-500/10 rounded text-pink-400 h-fit">
-                                                        <s.icon size={16} />
-                                                    </div>
-                                                    <div>
-                                                        <h4 className="font-bold text-pink-300 text-xs mb-1">{s.title}</h4>
-                                                        <p className="text-xs text-slate-400 leading-relaxed">{s.content}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* SECTION 3: MAINTENANCE */}
-                                <div className="space-y-2">
-                                    <div className="flex items-center gap-2 px-1 border-b border-slate-800 pb-2 mb-2">
-                                        <Anchor size={16} className="text-teal-400" />
-                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">MAINTENANCE (維護協議)</h3>
-                                    </div>
-                                    <div className="bg-teal-950/30 border border-teal-500/30 p-5 rounded-xl">
-                                        <h3 className="text-teal-400 font-bold text-sm mb-1 flex items-center gap-2">
-                                            <Activity size={16} />
-                                            {pilotData.maintenance.title}
-                                        </h3>
-                                        <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.maintenance.desc}</p>
-                                        
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                            {pilotData.maintenance.strategies.map((s, i) => (
-                                                <div key={i} className="bg-slate-950/60 p-3 rounded border border-teal-500/20 flex flex-col">
-                                                    <div className="flex items-center gap-2 mb-2">
-                                                        <div className="p-1.5 bg-teal-500/20 rounded text-teal-400">
-                                                            <s.icon size={14} />
+                                                    <h4 className="font-bold text-teal-300 text-xs mb-1">{pilotData.duality.daily.title}</h4>
+                                                    <div className="text-xs text-slate-400 leading-snug space-y-2">
+                                                        <p>{pilotData.duality.daily.desc}</p>
+                                                        <ul className="space-y-1">
+                                                            {pilotData.duality.daily.items.map((item, idx) => (
+                                                                <li key={idx} className="flex gap-2">
+                                                                    <div className="p-1 bg-teal-500/10 rounded h-fit mt-0.5 text-teal-400"><item.icon size={10} /></div>
+                                                                    <div>
+                                                                        <span className="text-teal-300 font-bold">{item.type}:</span> {item.action}
+                                                                    </div>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                        <div className="mt-2 pt-2 border-t border-teal-500/10 flex gap-2">
+                                                            <div className="p-1 bg-teal-500/10 rounded h-fit mt-0.5 text-teal-400"><Sofa size={10} /></div>
+                                                            <div>
+                                                                <span className="text-teal-300 font-bold">{pilotData.duality.daily.localReset.title}:</span> {pilotData.duality.daily.localReset.desc}
+                                                            </div>
                                                         </div>
-                                                        <h4 className="font-bold text-teal-300 text-xs">{s.type}</h4>
                                                     </div>
-                                                    <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Purpose</div>
-                                                    <p className="text-xs text-slate-300 mb-2 leading-snug">{s.purpose}</p>
-                                                    <div className="text-[10px] text-slate-500 font-mono mb-1 uppercase">Action</div>
-                                                    <p className="text-xs text-slate-400 leading-snug">{s.action}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* General Maintenance Strategy (Kept as fallback/general reference) */}
+                                        <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl opacity-60 hover:opacity-100 transition-opacity">
+                                            <h3 className="text-teal-400 font-bold text-sm mb-3 flex items-center gap-2">
+                                                <Wrench size={16} />
+                                                MAINTENANCE STRATEGY
+                                            </h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                {pilotData.maintenance.strategies.map((s, i) => (
+                                                    <div key={i} className="bg-slate-900/60 p-3 rounded border border-teal-500/20 flex flex-col">
+                                                        <div className="flex items-center gap-2 mb-2">
+                                                            <div className="p-1.5 bg-teal-500/20 rounded text-teal-400">
+                                                                <s.icon size={14} />
+                                                            </div>
+                                                            <h4 className="font-bold text-teal-300 text-xs">{s.type}</h4>
+                                                        </div>
+                                                        <p className="text-xs text-slate-400 leading-snug">{s.purpose}</p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* 4.4 LOG TAB */}
+                                {pilotTab === 'log' && (
+                                    <div className="space-y-6 animate-in fade-in">
+                                        <div className="flex items-center gap-2 px-1 border-b border-slate-800 pb-2 mb-2">
+                                            <History size={16} className="text-amber-400" />
+                                            <h3 className="text-xs font-bold text-slate-400 tracking-wider">FLIGHT LOG (航行日誌)</h3>
+                                        </div>
+                                        <div className="relative border-l border-slate-800 ml-3 space-y-6 py-2">
+                                            {pilotData.script.map((s, i) => (
+                                                <div key={i} className="pl-6 relative group">
+                                                    <div className={`absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full border-2 ${i === 0 ? 'bg-amber-500 border-amber-500 animate-pulse' : i === 3 ? 'bg-slate-900 border-indigo-500' : 'bg-slate-900 border-slate-600'}`}></div>
+                                                    <div className="flex items-baseline gap-2 mb-1">
+                                                        <span className={`text-[10px] font-mono px-1.5 rounded border ${i === 0 ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' : i === 3 ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30' : 'bg-slate-800 text-slate-500 border-slate-700'}`}>{s.phase}</span>
+                                                        <span className="text-[10px] text-slate-600">{s.time}</span>
+                                                    </div>
+                                                    <h4 className={`font-bold text-sm mb-1 ${i === 0 ? 'text-slate-200' : 'text-slate-400'}`}>{s.title}</h4>
+                                                    <p className="text-xs text-slate-500 leading-relaxed group-hover:text-slate-300 transition-colors">{s.desc}</p>
+                                                    {s.special && (
+                                                        <div className="mt-2 text-[10px] text-emerald-400 border-t border-slate-700/50 pt-2 flex items-center gap-1.5">
+                                                            <Check size={10} /> {s.desc}
+                                                        </div>
+                                                    )}
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
-                                </div>
-
-                                {/* SECTION 4: THE LOG */}
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-2 px-1 border-b border-slate-800 pb-2 mb-2">
-                                        <History size={16} className="text-amber-400" />
-                                        <h3 className="text-xs font-bold text-slate-400 tracking-wider">FLIGHT LOG (航行日誌)</h3>
-                                    </div>
-                                    <div className="relative border-l border-slate-800 ml-3 space-y-6 py-2">
-                                        {pilotData.script.map((s, i) => (
-                                            <div key={i} className="pl-6 relative group">
-                                                <div className={`absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full border-2 ${i === 0 ? 'bg-amber-500 border-amber-500 animate-pulse' : i === 3 ? 'bg-slate-900 border-indigo-500' : 'bg-slate-900 border-slate-600'}`}></div>
-                                                <div className="flex items-baseline gap-2 mb-1">
-                                                    <span className={`text-[10px] font-mono px-1.5 rounded border ${i === 0 ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' : i === 3 ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30' : 'bg-slate-800 text-slate-500 border-slate-700'}`}>{s.phase}</span>
-                                                    <span className="text-[10px] text-slate-600">{s.time}</span>
-                                                </div>
-                                                <h4 className={`font-bold text-sm mb-1 ${i === 0 ? 'text-slate-200' : 'text-slate-400'}`}>{s.title}</h4>
-                                                <p className="text-xs text-slate-500 leading-relaxed group-hover:text-slate-300 transition-colors">{s.desc}</p>
-                                                {s.special && (
-                                                    <div className="mt-2 text-[10px] text-emerald-400 border-t border-slate-700/50 pt-2 flex items-center gap-1.5">
-                                                        <Check size={10} /> {s.desc}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
+                                )}
 
                             </div>
                         )}
