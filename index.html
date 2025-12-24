@@ -59,7 +59,7 @@
             BookOpen, Sun, Coffee, Activity, Moon, Globe, ClipboardCheck, 
             CheckSquare, PlaneTakeoff, PlaneLanding, Layout, Cpu, Bug, 
             Zap, Map, Eye, Shield, Server, CheckCircle, AlertCircle,
-            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target, ShieldCheck, Sparkles, Check, Globe2, Dumbbell, Info, Wrench, FileText, Link, BatteryCharging, BrainCircuit, Headphones, Sofa
+            Box, Layers, AlignLeft, Grid, User, GitBranch, Terminal, Scroll, Database, History, Fingerprint, Lock, Flame, Plane, Mountain, Compass, HelpCircle, HeartPulse, Anchor, MapPin, HeartHandshake, Users, ArrowUpCircle, Target, ShieldCheck, Sparkles, Check, Globe2, Dumbbell, Info, Wrench, FileText, Link, BatteryCharging, BrainCircuit, Headphones, Sofa, CalendarClock, ArrowRight, PenTool
         } from 'lucide-react';
 
         // --- Data Definitions ---
@@ -91,14 +91,14 @@
                 icon: Eye, 
                 color: "text-cyan-400", 
                 desc: "視覺協議與空間動線。建立「零阻力動線」（物品手伸即得）與「1+1 備品制」。維持桌面 80% 留白。看不見＝不存在，零雜物＝零焦慮。",
-                link: "PILOT > MAINT > DAILY STANDBY"
+                link: "PILOT > MAINT > DAILY MAINTENANCE"
             },
             { 
                 title: "裝甲護盾：4/6 高敏塗層", 
                 icon: Shield, 
                 color: "text-emerald-400", 
                 desc: "需求：「低語境」互動（少人情、多規則）。「北歐」是心理座標而非地理座標。透過系統化管理，你能在任何地方建立自己的「虛擬北歐」。",
-                link: "PILOT > MAINT > SYSTEM MAINTENANCE"
+                link: "PILOT > MAINT > REMOTE CALIBRATION"
             },
             { 
                 title: "主要任務：系統架構師", 
@@ -246,18 +246,24 @@
             duality: {
                 title: "PROJECT: DUALITY (雙極計畫)",
                 desc: "將旅行視為「系統升級專案」。這不是逃避，而是為了下載「環境參數」以校準內在系統。",
+                tools: [
+                    { name: "審計筆記本", desc: "寫下「我可以刪掉什麼？」（挪威） / 「我必須堅持什麼？」（智利）", icon: PenTool },
+                    { name: "降噪耳機", desc: "挪威：戴上體驗極致安靜。智利：拿掉聽自然咆哮。", icon: Headphones }
+                ],
                 missions: [
                     { 
                         name: "模組 A：挪威 (Norway)", 
-                        subtitle: "SYSTEM AUDIT (系統審計)",
-                        purpose: "【遠程校準】觀察「社會秩序」的極致。學習「減法」與「無痛管理」。這不是旅遊，是去下載「環境參數」。",
+                        code: "SYSTEM_AUDIT",
+                        purpose: "觀察「社會秩序」的極致。學習「減法」與「無痛管理」。",
                         action: "帶著「審計筆記本」，記錄那些「看不見的規則」。體驗什麼叫「安靜的效率」。",
                         tasks: [
+                            "腦內安裝：詹代法則 (Jante Law)。觀察「去階級化」的平等互動。",
                             "觀察動線：奧斯陸歌劇院如何用空間引導人群（不強制）。",
-                            "體驗無人化：嘗試全程不開口完成交通/購物（低語境）。",
+                            "體驗無人化：嘗試全程不開口完成交通/購物（體驗低語境）。",
+                            "視覺訓練：觀察建築的負空間 (Negative Space) 與留白。",
                             "感受邊界：在峽灣觀察水如何被山脈完美限制（物理隱喻）。"
                         ],
-                        prep: "體能：日行 2萬步的城市耐久力。 資源：高門檻預算策略（買時間與體驗）。",
+                        prep: "體能：日行 2萬步的城市耐久力。 資源：高門檻預算策略（買時間與體驗）。裝備：Gore-Tex (介面防護層)。",
                         color: "text-emerald-400",
                         bg: "bg-emerald-950/30",
                         border: "border-emerald-500/20",
@@ -265,15 +271,16 @@
                     },
                     { 
                         name: "模組 B：智利 (Chile)", 
-                        subtitle: "ENERGY GROUNDING (能量接地)",
-                        purpose: "【在地重組的終極版】觀察「自然秩序」的極致。啟動「黃星星」圖騰，接引地氣。",
+                        code: "ENERGY_GROUNDING",
+                        purpose: "觀察「自然秩序」的極致。啟動「黃星星」圖騰，接引地氣。",
                         action: "在阿塔卡馬看星空（混亂中的秩序）。在百內塔看邊界（意志力的具象化）。",
                         tasks: [
                             "視覺衝擊：親眼見證「甲木（百內塔）」直插雲霄的震撼。",
-                            "星空校準：在 ALMA 感受「混亂中的極致秩序」。",
+                            "星空校準：在 ALMA/阿塔卡馬沙漠感受極致乾燥與星空秩序。",
                             "垂直深耕：在聖地牙哥感受被高山深海夾擊的能量。",
+                            "空間校準：在 Google Earth 拉遠地圖，感受狹長國土的邊界感。"
                         ],
-                        prep: "體能：負重深蹲與爬樓梯（練核心）。 資源：預約稀缺資源（山屋/天文台）。",
+                        prep: "體能：負重深蹲、爬樓梯 (W Trek 準備)。 資源：提前半年搶訂山屋。裝備：極致防曬與保濕（抗火防燥）。",
                         color: "text-rose-400",
                         bg: "bg-rose-950/30",
                         border: "border-rose-500/20",
@@ -281,42 +288,89 @@
                     }
                 ],
                 daily: {
-                    title: "DAILY MAINTENANCE PROTOCOL (日常維護協議)",
-                    desc: "日常待機不是發呆，而是「動態清理」。",
+                    title: "日常待機模式 (Daily Standby)",
+                    content: "把旅行準備當作「動態休息」。覺得煩躁時，不要滑手機，去深蹲（為了智利），或研究裝備（為了挪威）。這是把壓力轉化為期待感的最佳方式。",
+                    icon: Dumbbell
+                }
+            },
+            maintenance: {
+                level1: {
+                    title: "LEVEL 1: DAILY MAINTENANCE (日常維護)",
+                    desc: "頻率：每日 | 時長：30-60 分鐘。目標：動態清理，並為遠程專案儲備能量。",
+                    specs: "頻率：每日 | 時長：30-60 分鐘",
                     items: [
                         {
                             type: "物理釋放 (Physical Venting)",
                             target: "針對薦骨能量 (MG)",
-                            action: "深蹲 20 分鐘 / Zone 2 快走。目的：把煩躁排出身體。",
+                            action: "深蹲 20 分鐘 / Zone 2 快走。目的：把煩躁排出身體，儲備「智利行」體能。",
+                            link: "為 [智利] 儲備體能",
                             icon: BatteryCharging
                         },
                         {
                             type: "腦力導流 (Mental Channeling)",
                             target: "針對壬水思緒 (Scholar)",
-                            action: "整理 Notion / 優化檔案命名 / 研究裝備。目的：把水導入木（建立微型秩序）。",
+                            action: "整理 Notion / 研究登山裝備。目的：把水導入木（建立微型秩序），為「專案」做功課。",
+                            link: "為 [架構師] 累積底層邏輯",
                             icon: BrainCircuit
                         },
                         {
                             type: "感官隔離 (Sensory Isolation)",
                             target: "針對高敏特質 (HSP)",
-                            action: "降噪耳機 / 獨處一小時 / 拒絕無效社交。目的：修復護盾。",
+                            action: "降噪耳機 / 獨處一小時 / 拒絕無效社交。目的：模擬「北歐」氛圍，修復護盾。",
+                            link: "模擬 [挪威] 低語境氛圍",
                             icon: Headphones
                         }
-                    ],
-                    localReset: {
-                        title: "在地重組 (Local Reset)",
-                        desc: "【週末專案】離開日常環境（如去大叻/高品質 Resort）。執行「數位排毒」。這是為了系統重啟 (Reboot)，不只是清理緩存。",
-                        icon: Sofa
+                    ]
+                },
+                level2: {
+                    title: "LEVEL 2: LOCAL RESET (在地重組)",
+                    desc: "目標：系統重啟 (Reboot)。離開日常環境，進行中度修復。",
+                    specs: "頻率：每 1-3 個月 (每季) | 時長：3-4 天",
+                    action: "地點：大叻 (Da Lat) 或高品質 Resort。策略：數位排毒，切斷工作訊號。重點不在觀光，在於「切換場景」以重置大腦。",
+                    icon: Sofa
+                },
+                level3: {
+                    title: "LEVEL 3: REMOTE CALIBRATION (遠程校準)",
+                    desc: "目標：系統大更新 (Major Update)。下載環境參數，校準內在秩序。",
+                    specs: "頻率：每 1-2 年 | 時長：10-14 天",
+                    icon: Plane,
+                    project: {
+                        title: "PROJECT: DUALITY (雙極計畫)",
+                        desc: "你的旗艦級校準專案。",
+                        missions: [
+                            { 
+                                name: "模組 A：挪威 (Norway)", 
+                                code: "SYSTEM_AUDIT",
+                                action: "去觀察社會秩序的極致。學習「減法」與「無痛管理」。體驗無人化服務與低語境互動。",
+                                tasks: [
+                                    "觀察動線：奧斯陸歌劇院如何用空間引導人群（不強制）。",
+                                    "體驗無人化：嘗試全程不開口完成交通/購物（體驗低語境）。",
+                                    "感受邊界：在峽灣觀察水如何被山脈完美限制（物理隱喻）。"
+                                ],
+                                prep: "體能：日行 2萬步的城市耐久力。 資源：高門檻預算策略（買時間與體驗）。裝備：Gore-Tex (介面防護層)。",
+                                color: "text-emerald-400",
+                                bg: "bg-emerald-950/30",
+                                border: "border-emerald-500/20",
+                                icon: Globe2
+                            },
+                            { 
+                                name: "模組 B：智利 (Chile)", 
+                                code: "ENERGY_GROUNDING",
+                                action: "去觀察自然秩序的極致。在阿塔卡馬看星空，在百內塔看邊界。啟動黃星星能量。",
+                                tasks: [
+                                    "視覺衝擊：親眼見證「甲木（百內塔）」直插雲霄的震撼。",
+                                    "星空校準：在 ALMA/阿塔卡馬沙漠感受極致乾燥與星空秩序。",
+                                    "垂直深耕：在聖地牙哥感受被高山深海夾擊的能量。",
+                                ],
+                                prep: "體能：負重深蹲、核心肌群、預約搶票。",
+                                color: "text-rose-400",
+                                bg: "bg-rose-950/30",
+                                border: "border-rose-500/20",
+                                icon: Mountain
+                            }
+                        ]
                     }
                 }
-            },
-            maintenance: {
-                title: "SYSTEM MAINTENANCE (維護協議)",
-                desc: "高壓反應爐需要定期停機冷卻。你的休假不是為了「玩」，而是為了「修復護盾」與「校準系統」。",
-                strategies: [
-                    { type: "遠程校準 (北歐行)", purpose: "去確認藍圖。親身體驗什麼是「極致的系統化社會」。這不是「逃避」，而是「選修課」。", action: "執行三項考察：1. 體驗無人化服務，感受不求人的流暢。2. 在圖書館感受「互不打擾」的舒適。3. 記錄「實體 UX」：不拍風景，只拍指示牌、地貼動線、防呆設計。這些是高效社會的 Source Code。", icon: Plane },
-                    { type: "在地重組 (越南/近程)", purpose: "對抗高熵增 (Entropy)。在混亂的環境中，刻意尋找「低噪點」的孤島。", action: "避開人擠人。選擇高單價、極靜謐的 Resort。帶書不帶手機。執行「數位排毒」。", icon: Mountain }
-                ]
             },
             script: [
                 { phase: "v1.0 (Debug)", time: "現在 (1-2年)", title: "轉型陣痛：編譯中", desc: "更換作業系統。忍受笨蛋與新技術的挫折 (React/BI)。每一次痛苦都是在為自動化寫代碼。任務：不要放棄轉型。" },
@@ -397,7 +451,7 @@
                                 <Target size={10} /> COURSE LOCKED
                             </div>
                             <div className="text-[10px] text-slate-500 font-mono">
-                                v7.5 Optimized
+                                v8.2 Project Duality Enhanced
                             </div>
                         </div>
                     </header>
@@ -765,80 +819,114 @@
                                     <div className="space-y-6 animate-in fade-in">
                                         <div className="bg-teal-950/30 border border-teal-500/30 p-5 rounded-xl">
                                             <h3 className="text-teal-400 font-bold text-sm mb-1 flex items-center gap-2">
-                                                <Activity size={16} />
-                                                {pilotData.duality.title}
+                                                <BatteryCharging size={16} />
+                                                {pilotData.maintenance.level1.title}
                                             </h3>
-                                            <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.duality.desc}</p>
+                                            <div className="px-2 py-0.5 bg-teal-500/20 rounded border border-teal-500/30 text-[10px] text-teal-300 font-mono w-fit mb-3">
+                                                {pilotData.maintenance.level1.specs}
+                                            </div>
+                                            <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.maintenance.level1.desc}</p>
                                             
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                                                {pilotData.duality.missions.map((m, i) => (
-                                                    <div key={i} className={`bg-slate-950/60 p-3 rounded border ${i === 0 ? 'border-emerald-500/20' : 'border-rose-500/20'} flex flex-col`}>
-                                                        <div className="flex items-center gap-2 mb-2">
-                                                            <div className={`p-1.5 rounded ${i === 0 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}`}>
-                                                                <m.icon size={14} />
+                                            <div className="grid grid-cols-1 gap-3">
+                                                {pilotData.maintenance.level1.items.map((item, i) => (
+                                                    <div key={i} className="bg-slate-950/60 p-3 rounded border border-teal-500/20 flex flex-col gap-1">
+                                                        <div className="flex items-start gap-2">
+                                                            <div className="p-1.5 bg-teal-500/10 rounded text-teal-400 mt-0.5">
+                                                                <item.icon size={14} />
                                                             </div>
-                                                            <h4 className={`font-bold text-xs ${i === 0 ? 'text-emerald-300' : 'text-rose-300'}`}>{m.name}</h4>
-                                                        </div>
-                                                        <div className="text-[9px] text-slate-500 font-mono mb-0.5 uppercase tracking-wider">Code</div>
-                                                        <div className="text-[10px] font-mono text-slate-400 mb-2">{m.code}</div>
-                                                        <div className="text-[9px] text-slate-500 font-mono mb-0.5 uppercase tracking-wider">Action</div>
-                                                        <p className="text-xs text-slate-300 leading-snug">{m.action}</p>
-                                                        <div className="mt-2 pt-2 border-t border-slate-700/50">
-                                                            <ul className="list-disc list-inside text-[10px] text-slate-400 space-y-0.5">
-                                                                {m.tasks.map((task, idx) => (
-                                                                    <li key={idx}>{task}</li>
-                                                                ))}
-                                                            </ul>
+                                                            <div>
+                                                                <h4 className="font-bold text-teal-300 text-xs">{item.type} <span className="text-slate-500 font-normal">| {item.target}</span></h4>
+                                                                <p className="text-xs text-slate-400 leading-snug mb-1">{item.action}</p>
+                                                                <div className="flex items-center gap-1 text-[10px] text-sky-400/80 bg-sky-500/10 px-1.5 py-0.5 rounded w-fit border border-sky-500/20">
+                                                                    <ArrowRight size={8} /> {item.link}
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 ))}
-                                            </div>
-                                            <div className="bg-slate-900/50 p-3 rounded border border-teal-500/20 flex items-start gap-3">
-                                                <div className="p-1.5 bg-teal-500/10 rounded text-teal-400 mt-0.5">
-                                                    <Dumbbell size={14} />
-                                                </div>
-                                                <div>
-                                                    <h4 className="font-bold text-teal-300 text-xs mb-1">{pilotData.duality.daily.title}</h4>
-                                                    <div className="text-xs text-slate-400 leading-snug space-y-2">
-                                                        <p>{pilotData.duality.daily.desc}</p>
-                                                        <ul className="space-y-1">
-                                                            {pilotData.duality.daily.items.map((item, idx) => (
-                                                                <li key={idx} className="flex gap-2">
-                                                                    <div className="p-1 bg-teal-500/10 rounded h-fit mt-0.5 text-teal-400"><item.icon size={10} /></div>
-                                                                    <div>
-                                                                        <span className="text-teal-300 font-bold">{item.type}:</span> {item.action}
-                                                                    </div>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                        <div className="mt-2 pt-2 border-t border-teal-500/10 flex gap-2">
-                                                            <div className="p-1 bg-teal-500/10 rounded h-fit mt-0.5 text-teal-400"><Sofa size={10} /></div>
-                                                            <div>
-                                                                <span className="text-teal-300 font-bold">{pilotData.duality.daily.localReset.title}:</span> {pilotData.duality.daily.localReset.desc}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
-                                        {/* General Maintenance Strategy (Kept as fallback/general reference) */}
-                                        <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl opacity-60 hover:opacity-100 transition-opacity">
-                                            <h3 className="text-teal-400 font-bold text-sm mb-3 flex items-center gap-2">
-                                                <Wrench size={16} />
-                                                MAINTENANCE STRATEGY
+
+                                        <div className="bg-slate-900/50 border border-slate-800 p-5 rounded-xl">
+                                            <h3 className="text-violet-400 font-bold text-sm flex items-center gap-2 mb-2">
+                                                <Sofa size={16} />
+                                                {pilotData.maintenance.level2.title}
                                             </h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                                {pilotData.maintenance.strategies.map((s, i) => (
-                                                    <div key={i} className="bg-slate-900/60 p-3 rounded border border-teal-500/20 flex flex-col">
-                                                        <div className="flex items-center gap-2 mb-2">
-                                                            <div className="p-1.5 bg-teal-500/20 rounded text-teal-400">
-                                                                <s.icon size={14} />
+                                            <div className="px-2 py-0.5 bg-violet-500/20 rounded border border-violet-500/30 text-[10px] text-violet-300 font-mono w-fit mb-3">
+                                                {pilotData.maintenance.level2.specs}
+                                            </div>
+                                            <p className="text-xs text-slate-400 mb-2 leading-relaxed">{pilotData.maintenance.level2.desc}</p>
+                                            <div className="bg-slate-950/60 p-3 rounded border border-violet-500/20">
+                                                <p className="text-xs text-slate-300 leading-snug">{pilotData.maintenance.level2.action}</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-slate-900/50 border border-slate-800 p-5 rounded-xl">
+                                            <h3 className="text-sky-400 font-bold text-sm flex items-center gap-2 mb-2">
+                                                <Plane size={16} />
+                                                {pilotData.maintenance.level3.title}
+                                            </h3>
+                                            <div className="px-2 py-0.5 bg-sky-500/20 rounded border border-sky-500/30 text-[10px] text-sky-300 font-mono w-fit mb-3">
+                                                {pilotData.maintenance.level3.specs}
+                                            </div>
+                                            <p className="text-xs text-slate-400 mb-4 leading-relaxed">{pilotData.maintenance.level3.desc}</p>
+
+                                            <div className="mb-4">
+                                                <h4 className="text-xs font-bold text-slate-300 mb-2 flex items-center gap-2">
+                                                    <Globe2 size={12}/> {pilotData.maintenance.level3.project.title}
+                                                </h4>
+                                                <p className="text-[10px] text-slate-500 mb-3">{pilotData.maintenance.level3.project.intro}</p>
+                                                
+                                                {/* Toolbag Section */}
+                                                <div className="grid grid-cols-2 gap-2 mb-3">
+                                                    {pilotData.duality.tools.map((tool, i) => (
+                                                        <div key={i} className="bg-slate-800/50 border border-slate-700/50 p-2 rounded flex items-center gap-2">
+                                                            <div className="p-1 bg-slate-700 rounded text-slate-300">
+                                                                <tool.icon size={12} />
                                                             </div>
-                                                            <h4 className="font-bold text-teal-300 text-xs">{s.type}</h4>
+                                                            <div>
+                                                                <div className="text-[10px] font-bold text-slate-200">{tool.name}</div>
+                                                                <div className="text-[8px] text-slate-500">{tool.desc}</div>
+                                                            </div>
                                                         </div>
-                                                        <p className="text-xs text-slate-400 leading-snug">{s.purpose}</p>
-                                                    </div>
-                                                ))}
+                                                    ))}
+                                                </div>
+
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                    {pilotData.maintenance.level3.project.missions.map((m, i) => (
+                                                        <div key={i} className={`bg-slate-950/60 p-3 rounded border ${i === 0 ? 'border-emerald-500/20' : 'border-rose-500/20'} flex flex-col h-full`}>
+                                                            <div className="flex items-center gap-2 mb-2">
+                                                                <div className={`p-1.5 rounded ${i === 0 ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}`}>
+                                                                    <m.icon size={14} />
+                                                                </div>
+                                                                <h4 className={`font-bold text-xs ${i === 0 ? 'text-emerald-300' : 'text-rose-300'}`}>{m.name}</h4>
+                                                            </div>
+                                                            <div className="text-[9px] text-slate-500 font-mono mb-0.5 uppercase tracking-wider">Code</div>
+                                                            <div className="text-[10px] font-mono text-slate-400 mb-2">{m.code}</div>
+                                                            <div className="text-[9px] text-slate-500 font-mono mb-0.5 uppercase tracking-wider">Action</div>
+                                                            <p className="text-xs text-slate-300 leading-snug mb-3">{m.action}</p>
+
+                                                            {/* Restored Details Section */}
+                                                            {m.tasks && (
+                                                                <div className="mt-auto pt-2 border-t border-slate-700/50">
+                                                                     <div className="text-[9px] text-slate-500 font-mono mb-1 uppercase tracking-wider">Focus Points</div>
+                                                                    <ul className="list-disc list-inside text-[10px] text-slate-400 space-y-1">
+                                                                        {m.tasks.map((task, idx) => (
+                                                                            <li key={idx}>{task}</li>
+                                                                        ))}
+                                                                    </ul>
+                                                                </div>
+                                                            )}
+                                                            
+                                                            {/* Restored Prep Section */}
+                                                            {m.prep && (
+                                                                <div className="mt-2 pt-2 border-t border-slate-700/30 text-[10px] text-slate-500">
+                                                                    <span className="font-bold text-slate-400">Prep:</span> {m.prep}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
